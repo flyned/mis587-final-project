@@ -75,13 +75,19 @@ has_nn_model = len(list(model_dir.glob("nn_model_*.keras"))) > 0
 
 # Check if TensorFlow is available (for Neural Network support)
 tensorflow_available = False
+tf_error_msg = None
 if has_nn_model:
     try:
-        import tensorflow
+        import tensorflow as tf
+        # Test that TensorFlow actually works
+        _ = tf.__version__
         tensorflow_available = True
-    except (ImportError, Exception) as e:
+    except ImportError as e:
+        tf_error_msg = f"TensorFlow not installed: {e}"
         tensorflow_available = False
-        has_nn_model = False  # Disable NN option if TensorFlow not available
+    except Exception as e:
+        tf_error_msg = f"TensorFlow error: {e}"
+        tensorflow_available = False
 
 # Model selection in sidebar
 with st.sidebar:
@@ -105,7 +111,10 @@ with st.sidebar:
 
     # Show warning if TensorFlow not available
     if not tensorflow_available and len(list(model_dir.glob("nn_model_*.keras"))) > 0:
-        st.warning("Neural Network unavailable (TensorFlow not installed or incompatible)")
+        if tf_error_msg:
+            st.warning(f"Neural Network unavailable: {tf_error_msg}")
+        else:
+            st.warning("Neural Network unavailable (TensorFlow not installed)")
 
     if not model_options:
         st.error("No trained models found. Please train a model first.")
