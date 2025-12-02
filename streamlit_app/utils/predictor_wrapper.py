@@ -205,7 +205,7 @@ def predict_single_property(model, metadata, property_data):
         ci_upper = pred + 1.96 * std
     else:
         # Fallback for neural networks and other models: use overall MAE as approximation
-        mae = metadata.get('validation_metrics', {}).get('mae', 0.68)
+        mae = metadata.get('validation_metrics', {}).get('mae', 1.20)
         ci_lower = pred - 1.96 * mae
         ci_upper = pred + 1.96 * mae
 
@@ -249,7 +249,8 @@ def assign_confidence_level(property_data, predicted_rent):
             confidence = 'MEDIUM'
 
     # Check building age
-    current_year = 2025
+    from datetime import datetime
+    current_year = datetime.now().year
     year_built = property_data.get('Year Built', current_year)
     building_age = current_year - year_built
 

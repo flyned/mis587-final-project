@@ -58,10 +58,10 @@ with tab1:
         rent estimates for commercial properties.
 
         **Key Features:**
-        - ⚡ **Instant Predictions**: Get results in <3 seconds
-        - 🎯 **High Accuracy**: 86% of rent variation explained (R² = 0.861)
+        - **Instant Predictions**: Get results in <3 seconds
+        - **High Accuracy**: 76% of rent variation explained (R² = 0.762)
         - **Explainable**: See exactly why each prediction is made (SHAP)
-        - 🔍 **Confidence Scoring**: Know when to trust predictions vs. get manual review
+        - **Confidence Scoring**: Know when to trust predictions vs. get manual review
         - **Batch Processing**: Analyze entire portfolios at once
 
         ### Training Data
@@ -81,25 +81,25 @@ with tab1:
 
         st.metric(
             "R² Score",
-            f"{val_metrics.get('r2', 0.861):.3f}",
+            f"{val_metrics.get('r2', 0.676):.3f}",
             help="Proportion of variance explained (higher is better, max = 1.0)"
         )
 
         st.metric(
             "MAE",
-            f"${val_metrics.get('mae', 0.68):.2f}/SF/Yr",
+            f"${val_metrics.get('mae', 1.20):.2f}/SF/Yr",
             help="Mean Absolute Error - average prediction error"
         )
 
         st.metric(
             "RMSE",
-            f"${val_metrics.get('rmse', 1.05):.2f}/SF/Yr",
+            f"${val_metrics.get('rmse', 1.61):.2f}/SF/Yr",
             help="Root Mean Square Error"
         )
 
         st.metric(
             "Within ±10%",
-            f"{val_metrics.get('within_10pct', 84):.1f}%",
+            f"{val_metrics.get('within_10pct', 0.653) * 100:.1f}%",
             help="Percentage of predictions within 10% of actual rent"
         )
 
@@ -116,7 +116,7 @@ with tab2:
     - **Quality Filters**: Dropped columns with >95% missing data
 
     ### 2. Feature Engineering
-    The model transforms **78 raw features** into **195 engineered features**:
+    The model transforms **78 raw features** into **194 engineered features**:
 
     **Geospatial Features:**
     - Distance to market center
@@ -145,10 +145,15 @@ with tab2:
     - Prevents extreme values from skewing predictions
 
     ### 3. Model Training
-    **Algorithm**: Random Forest Regressor
-    - **Trees**: 200 estimators
-    - **Max Depth**: 30 levels
-    - **Min Samples Split**: 5 properties
+    **Primary Model**: Neural Network (TensorFlow/Keras)
+    - **Architecture**: 256 → 128 → 64 → 1 neurons with ReLU + Dropout
+    - **Validation R²**: 0.762 | **Test R²**: 0.615
+
+    **Secondary Model**: Random Forest Regressor
+    - **Trees**: 200 estimators | **Max Depth**: 20 levels
+    - **Validation R²**: 0.676 | **Test R²**: 0.656
+
+    **Data Split**:
     - **Training Set**: 7,520 properties (60%)
     - **Validation Set**: 2,507 properties (20%)
     - **Test Set**: 2,507 properties (20%)
@@ -167,12 +172,12 @@ with tab2:
     - Individual prediction explanations
     - Non-linear relationship detection
 
-    Top 5 Most Important Features:
-    1. **log_rent_sf_yr** (28.4%) - Historical rent patterns
-    2. **Longitude** (10.7%) - East-West location
-    3. **FEMA Map Date** (8.6%) - Flood risk assessment timing
-    4. **Latitude** (5.7%) - North-South location
-    5. **Origination Date** (5.1%) - Loan timing
+    Top 5 Most Important Features (Random Forest):
+    1. **Longitude** (14.9%) - East-West location
+    2. **FEMA Map Date** (11.8%) - Flood risk assessment timing
+    3. **Latitude** (7.4%) - North-South location
+    4. **properties_within_5mi** (6.6%) - Property density
+    5. **Origination Date** (4.3%) - Loan timing
 
     ### 5. Performance Validation
     Comprehensive testing across:
@@ -205,9 +210,9 @@ with tab3:
         - Standard features and amenities
 
         **Typical Accuracy:**
-        - MAE: $0.32-$0.58/SF/Yr
-        - R²: 0.82-0.89
-        - 85-90% predictions within ±10%
+        - MAE: $0.80-$1.20/SF/Yr
+        - R²: 0.65-0.76
+        - 65-72% predictions within ±10%
 
         **Use Cases:**
         - Initial client consultations
@@ -233,9 +238,9 @@ with tab3:
         - Unique or specialty features
 
         **Typical Accuracy:**
-        - MAE: $0.79-$3.28/SF/Yr
-        - R²: 0.65-0.75
-        - 70-80% predictions within ±10%
+        - MAE: $1.50-$2.50/SF/Yr
+        - R²: 0.50-0.65
+        - 50-65% predictions within ±10%
 
         **Recommended Actions:**
         - Get manual appraisal
@@ -293,23 +298,23 @@ with tab4:
 
     st.markdown("""
     ### Geographic Gaps:
-    - **Springfield MA**: Higher error (MAE $0.84 vs $0.68 overall)
+    - **Springfield MA**: Higher error than Boston/Worcester markets
     - **Small markets**: Insufficient training data
     - **International**: Not trained on non-US properties
 
     ### Property Type Gaps:
-    - **Food Processing**: MAE $0.96 (40% worse than average)
+    - **Food Processing**: Higher error than standard industrial
     - **Specialized Industrial**: Limited training examples
     - **Mixed-Use**: Difficult to classify
 
     ### Price Range Issues:
-    - **Luxury Segment** (>$20/SF/Yr): MAE $3.28 (7x worse than average)
+    - **Luxury Segment** (>$20/SF/Yr): Significantly higher error
     - Model trained primarily on mid-market properties
     - Premium features not fully captured
 
     ### Temporal Limitations:
-    - Training data from 2020-2024
-    - May not reflect post-pandemic market shifts
+    - Training data through 2025
+    - Market conditions change over time
     - Requires periodic retraining
 
     ### Data Quality Dependencies:
@@ -404,7 +409,7 @@ with tab5:
 
     with st.expander("How often is the model updated?"):
         st.markdown("""
-        **Current:** Model trained November 2024
+        **Current:** Model trained December 2025
 
         **Update frequency:**
         - **Quarterly**: Retrain with new market data
@@ -443,9 +448,10 @@ with tab5:
 
         **Both matter:**
         - High R² + Low MAE = Excellent model
-        - Our model: R² = 0.861, MAE = $0.68 (industry-leading performance)
+        - Our Neural Network: R² = 0.762, MAE = $0.99
+        - Our Random Forest: R² = 0.676, MAE = $1.20
         """)
 
     st.markdown("---")
-    st.markdown("**Model Version:** 1.0 | **Last Updated:** November 28, 2024")
-    st.caption("Built with  for Lornell Real Estate | Powered by Python, Streamlit, and scikit-learn")
+    st.markdown("**Model Version:** 2.0 | **Last Updated:** December 2025")
+    st.caption("Built with  for Lornell Real Estate | Powered by Python, Streamlit, TensorFlow & scikit-learn")

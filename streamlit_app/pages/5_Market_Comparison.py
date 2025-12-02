@@ -116,10 +116,11 @@ with st.form("market_comparison_form"):
         )
 
     with col2:
+        from datetime import datetime
         year_built = st.number_input(
             "Year Built",
             min_value=1800,
-            max_value=2025,
+            max_value=datetime.now().year,
             value=2000,
             step=1,
             help="Year property was constructed"

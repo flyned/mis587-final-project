@@ -152,9 +152,10 @@ with col1:
                 value=50_000, step=1000
             )
         with col_year:
+            from datetime import datetime
             year_built = st.number_input(
                 "Year Built",
-                min_value=1800, max_value=2025,
+                min_value=1800, max_value=datetime.now().year,
                 value=2000, step=1
             )
 
@@ -197,7 +198,8 @@ if submit:
     with st.spinner("Analyzing market timing..."):
         try:
             # Calculate building age
-            building_age = 2025 - year_built
+            from datetime import datetime
+            building_age = datetime.now().year - year_built
 
             # Heuristic-based prediction model
             # Note: The ML model predicts 0 for all cases due to highly skewed training data

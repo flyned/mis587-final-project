@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  /* Simple grey palette */
+  --color-primary-500: #374151;
+  --color-primary-600: #1f2937;
+  --color-primary-700: #111827;
+
+  --color-accent-500: #6b7280;
+  --color-accent-600: #4b5563;
+
+  --color-success-400: #059669;
+  --color-success-500: #047857;
+
+  /* Font families */
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #1f2937;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Simple card - no glass effect */
+.glass {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+/* Section styling */
+.section {
+  padding: 6rem 1.5rem;
+  position: relative;
+}
+
+.section-content {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+/* Simple metric card */
+.metric-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* Tags - simple style */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.tag-accent {
+  background: #f9fafb;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+}
+
+.tag-success {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+/* Font display */
+.font-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+/* Lenis smooth scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}

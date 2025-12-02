@@ -81,13 +81,13 @@ with st.sidebar:
     model_options = []
     model_option_labels = []
 
-    if has_rf_model:
-        model_options.append("random_forest")
-        model_option_labels.append("Random Forest (Default)")
-
     if has_nn_model:
         model_options.append("neural_network")
-        model_option_labels.append("Neural Network")
+        model_option_labels.append("Neural Network (Default - Best Accuracy)")
+
+    if has_rf_model:
+        model_options.append("random_forest")
+        model_option_labels.append("Random Forest")
 
     if not model_options:
         st.error("No trained models found. Please train a model first.")
@@ -269,13 +269,15 @@ with col1:
 
         with col_year:
             # Get default year from selected property
+            from datetime import datetime
+            current_year = datetime.now().year
             default_year = int(selected_prop['Year Built']) if selected_prop and selected_prop.get('Year Built') else 2000
-            default_year = max(1800, min(2025, default_year))  # Clamp to valid range
+            default_year = max(1800, min(current_year, default_year))  # Clamp to valid range
 
             year_built = st.number_input(
                 "Year Built",
                 min_value=1800,
-                max_value=2025,
+                max_value=current_year,
                 value=default_year,
                 step=1,
                 help="Year property was constructed"
@@ -422,7 +424,8 @@ if submit:
             col_insights1, col_insights2, col_insights3 = st.columns(3)
 
             with col_insights1:
-                building_age = 2025 - year_built
+                from datetime import datetime
+                building_age = datetime.now().year - year_built
                 st.metric(
                     label="Building Age",
                     value=f"{building_age} years",

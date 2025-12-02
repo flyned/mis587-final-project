@@ -87,8 +87,8 @@ def main():
 
     with col2:
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-        st.metric(label="Model Accuracy (R²)", value="86.1%")
-        st.metric(label="Average Error (MAE)", value="$0.68/SF/Yr")
+        st.metric(label="Model Accuracy (R²)", value="76.2%")
+        st.metric(label="Average Error (MAE)", value="$0.99/SF/Yr")
         st.metric(label="Properties Analyzed", value="12,534")
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -101,7 +101,7 @@ def main():
     with col1:
         st.metric(
             label="Predictions Within ±10%",
-            value="84%",
+            value="72%",
             help="Percentage of predictions within 10% of actual rent"
         )
 
@@ -115,7 +115,7 @@ def main():
     with col3:
         st.metric(
             label="Feature Variables",
-            value="195",
+            value="194",
             help="Engineered features used for predictions"
         )
 
@@ -144,8 +144,8 @@ def main():
     with col2:
         st.markdown("""
         #### 2. AI Analysis
-        - Random Forest Model
-        - 195 Feature Variables
+        - Neural Network & Random Forest Models
+        - 194 Feature Variables
         - Trained on 12,534 Properties
         - SHAP Explainability
         """)
@@ -169,13 +169,13 @@ def main():
         st.markdown('<div class="info-box">', unsafe_allow_html=True)
         st.markdown("""
         **High Confidence - Use Directly**
-        - Office & Retail properties
+        - Industrial & Warehouse properties
         - Medium price range ($5-$20/SF/Yr)
         - Major markets (Boston, Worcester, Providence, etc.)
         - 20-50 year old buildings
         - Standard property types
 
-        *Typical error: $0.32-$0.58/SF/Yr*
+        *Typical error: $0.80-$1.20/SF/Yr*
         """)
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -189,7 +189,7 @@ def main():
         - Small/emerging markets
         - Properties with unique features
 
-        *Typical error: $0.79-$3.28/SF/Yr*
+        *Typical error: $1.50-$2.50/SF/Yr*
         """)
         st.markdown('</div>', unsafe_allow_html=True)
 
