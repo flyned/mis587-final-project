@@ -1,16 +1,25 @@
 # Academic Submission Checklist
-## MIS587 Final Project
+## MIS587 Final Project - Team 2
+## Massachusetts Industrial Properties Price Prediction and Market Analysis
+
+**Team 2:**
+- Alex Siracusa (Lead Data Analyst)
+- Martin Thulani Milanzi (Risk Analyst)
+- Shrey Sharma (Project Manager)
+- Faisal Yaseen (Subject Matter Expert)
+
+**Sponsor:** Lornell Real Estate (Todd Lornell - Principal/Founder)
 
 ---
 
 ## ✅ What You Have Ready
 
 ### **1. Written Report**
-📄 **File:** `ACADEMIC_SUBMISSION_REPORT.md`
+📄 **File:** `ACADEMIC_SUBMISSION_REPORT.md` and `FINAL_REPORT.md`
 - **Length:** ~5,500 words (~15-18 pages with figures)
 - **Sections:**
   - Executive Summary
-  - Problem Statement & Objectives
+  - Problem Statement & Objectives (aligned with Oct 6, 2025 proposal)
   - Data & Methodology
   - Results & Analysis
   - Business Impact
@@ -18,6 +27,7 @@
   - Conclusions
   - References & Appendices
 - **Status:** ✅ Ready for submission (within 20-page limit)
+- **Objectives Achieved:** All 4 proposal objectives complete
 
 ### **2. PowerPoint Presentation**
 📊 **File:** `PRESENTATION_SLIDES.md`
@@ -226,15 +236,23 @@ zip -r MIS587_FinalProject_Submission.zip MIS587FinalProject/ \
 
 ## 📧 Sample Submission Email
 
-**Subject:** MIS587 Final Project Submission - [Your Name]
+**Subject:** MIS587 Final Project Submission - Team 2
 
 **Body:**
 ```
 Dear Professor [Name],
 
-Please find attached my final project submission for MIS587 - Business Applications in Machine Learning.
+Please find attached our final project submission for MIS587 - Business Applications in Machine Learning.
 
-Project Title: Commercial Real Estate Rent Prediction Using Machine Learning
+Project Title: Massachusetts Industrial Properties Price Prediction and Market Analysis
+
+Team 2:
+- Alex Siracusa (Lead Data Analyst)
+- Martin Thulani Milanzi (Risk Analyst)
+- Shrey Sharma (Project Manager)
+- Faisal Yaseen (Subject Matter Expert)
+
+Sponsor: Lornell Real Estate (Todd Lornell - Principal/Founder)
 
 Deliverables included:
 1. ACADEMIC_SUBMISSION_REPORT.pdf (18 pages)
@@ -243,27 +261,28 @@ Deliverables included:
 4. MIS587_FinalProject_Code.zip (complete code repository)
 
 Project Summary:
-This project developed a Random Forest model to predict commercial real estate rental
-rates using 12,534 industrial properties from CoStar. The model achieves R² = 0.676
-with MAE of $1.20/SF/Yr, and includes a production-ready Streamlit web application
-for stakeholder use.
+This project achieved all four objectives from our October 6, 2025 proposal to Lornell Real Estate:
+
+1. Accurate Price Prediction: Neural Network achieves R² = 0.762 with MAE of $0.99/SF/Yr
+2. Market Timing Forecast: Days on Market model achieves 97.8% accuracy within 7 days
+3. Value Attribution Analysis: SHAP analysis with interpretable explanations
+4. Opportunity Identification: Investment scoring system in 7-page Streamlit app
 
 Key Technical Contributions:
-- 195 engineered features from 78 raw variables
+- 194 engineered features from 78 raw variables
+- Neural Network + Random Forest + Days on Market models
 - SHAP-based model interpretability
 - Data leakage prevention through rigorous validation
 - Memory optimization (70GB → 384MB)
 
 Live Demo Available:
-The Streamlit application can be accessed by running:
+The 7-page Streamlit application can be accessed by running:
   cd streamlit_app && streamlit run app.py
 
-I'm happy to answer any questions about the project.
+We're happy to answer any questions about the project.
 
 Best regards,
-[Your Name]
-[Student ID]
-[Email]
+Team 2
 ```
 
 ---

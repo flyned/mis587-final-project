@@ -1,5 +1,6 @@
 # Presentation Talking Points
-## Commercial Real Estate Rent Prediction - MIS587 Final Project
+## Massachusetts Industrial Properties Price Prediction and Market Analysis
+## MIS587 Final Project - Team 2
 ### Duration: 12-15 minutes
 
 ---
@@ -8,15 +9,17 @@
 
 **What to Say:**
 
-"Good [morning/afternoon], everyone. Today I'm presenting my MIS587 final project on Commercial Real Estate Rent Prediction Using Machine Learning.
+"Good [morning/afternoon], everyone. We are Team 2 presenting our MIS587 final project: Massachusetts Industrial Properties Price Prediction and Market Analysis.
 
-This project demonstrates how we can apply advanced machine learning techniques to solve a real-world business problem in the commercial real estate industry—specifically, predicting industrial property rental rates to support investment decision-making.
+This project was developed for our client Lornell Real Estate, where we applied advanced machine learning techniques to solve real-world business problems in the commercial real estate industry—specifically, predicting industrial property rental rates and market timing to support investment decision-making.
+
+Our team includes Alex Siracusa as Lead Data Analyst, Martin Thulani Milanzi as Risk Analyst, Shrey Sharma as Project Manager, and Faisal Yaseen as Subject Matter Expert.
 
 Let's dive in."
 
 **Delivery Tips:**
 - Speak confidently and make eye contact
-- Smile and establish rapport
+- Acknowledge the team and sponsor
 - Briefly acknowledge your audience
 
 ---
@@ -51,21 +54,22 @@ This is where machine learning comes in."
 
 **What to Say:**
 
-"We set out to accomplish four main objectives:
+"These four objectives came directly from our October 6, 2025 proposal to Lornell Real Estate:
 
-**First—Accurate Rent Prediction.** We needed to build a model that could predict industrial property rental rates with commercial-grade accuracy. In real estate, predictions within plus-or-minus 10% are considered usable for investment analysis.
+**First—Accurate Price Prediction.** We needed to build models that could predict industrial property prices, especially price per square foot, with commercial-grade accuracy.
 
-**Second—Value Attribution Analysis.** It's not enough to just make predictions—we need to understand WHY. Which features actually drive property value? Is it location? Building age? Size? This transparency is critical for stakeholder trust.
+**Second—Market Timing Forecast.** Lornell specifically requested forecasting Days-on-Market to inform their bidding strategies and negotiation tactics. This helps them know when to make aggressive offers versus when to wait.
 
-**Third—Opportunity Identification.** We wanted to create a framework that could flag undervalued properties—properties where the predicted rent is higher than the current market rate. This is where investors make money.
+**Third—Value Attribution Analysis.** It's not enough to just make predictions—we need to quantify which specific features drive value using SHAP analysis. This transparency is critical for stakeholder trust.
 
-**And finally—Production Deployment.** Academic projects often stop at model training. We went further and built a working web application that real estate professionals could actually use.
+**Fourth—Opportunity Identification.** We wanted to identify promising off-market properties through predictive framework analysis. This is where investors find value before others do.
 
-These weren't just technical goals—each one ties directly to business value."
+These weren't just technical goals—each one was a specific request from our client Lornell Real Estate, and I'm pleased to report we achieved all four."
 
 **Key Points:**
-- Link each objective to business outcome
-- Emphasize practicality over theory
+- Link objectives directly to the original proposal
+- Emphasize client relationship (Lornell Real Estate)
+- Foreshadow 100% objective completion
 
 **Transition:** "To achieve these goals, we needed high-quality data. Let me show you what we worked with."
 
@@ -154,26 +158,23 @@ Here's the key insight: [Point to callout box] 40% of our top 20 most important 
 
 **What to Say:**
 
-"We evaluated six machine learning algorithms, ranging from simple baselines to advanced ensemble methods.
+"We evaluated seven machine learning algorithms, including deep learning.
 
-[Point to table] Here's the head-to-head comparison on validation data. Ridge and Lasso regression—our simple baselines—achieved R-squared of 0.65, meaning they explain 65% of rent variation. That's decent but not great.
+[Point to table] Here's the head-to-head comparison. Our champion model is the Neural Network with R-squared of 0.762 and Mean Absolute Error of just 99 cents per square foot per year.
 
-Decision Tree performed poorly at 0.51—single trees tend to overfit.
+That's an 8.6% improvement over Random Forest, which was at 0.676. The Neural Network's architecture—256, 128, 64 neurons with dropout—captures complex non-linear relationships that tree-based methods miss.
 
-The ensemble methods—Random Forest, XGBoost, and LightGBM—all performed significantly better, in the 0.67 to 0.68 range.
+Random Forest still provides value for interpretability and has a smaller validation-to-test gap, so we keep both models available.
 
-Our champion model is Random Forest with R-squared of 0.676 and Mean Absolute Error of $1.20 per square foot per year. We selected it for three reasons:
+Most importantly, we also developed a Days on Market model that achieves 97.8% accuracy within 7 days—directly addressing Lornell's second objective for market timing predictions.
 
-One—best validation performance across both R-squared and MAE.
-Two—strong generalization. Notice the test metrics are very close to validation—no overfitting.
-Three—interpretability. Random Forest gives us feature importance and works well with SHAP analysis for explaining predictions.
-
-This bar chart shows the clear winner. [Point to visual]"
+[Point to winner box] This means we've achieved all four proposal objectives with high accuracy."
 
 **Key Points:**
-- Explain R-squared in plain English ("explains X% of variation")
-- Emphasize validation vs test consistency (shows generalization)
-- Justify model choice beyond just performance
+- Neural Network is the champion at 0.762 R²
+- Emphasize the 8.6% improvement over Random Forest
+- Highlight Days on Market model (Objective 2)
+- Connect back to 100% objective completion
 
 **Transition:** "Let's dive into how well this model actually performs."
 
@@ -183,22 +184,23 @@ This bar chart shows the clear winner. [Point to visual]"
 
 **What to Say:**
 
-"Our Random Forest model delivers strong, usable performance.
+"Our Neural Network model delivers strong, production-ready performance.
 
-On the validation set, R-squared of 0.676 means we explain 67.6% of the variation in rental rates. The Mean Absolute Error is $1.20 per square foot per year, with a Mean Absolute Percentage Error of 11%.
+On the validation set, R-squared of 0.762 means we explain 76.2% of the variation in rental rates. The Mean Absolute Error is just 99 cents per square foot per year.
 
-But here's the business metric that really matters: [Point to box] 64.5% of our predictions fall within plus-or-minus 10% of actual rents. In commercial real estate, ±10% is the industry standard for acceptable valuation accuracy.
+But here's the business metric that really matters: [Point to box] 72.4% of our predictions fall within plus-or-minus 10% of actual rents. In commercial real estate, ±10% is the industry standard for acceptable valuation accuracy. We're exceeding that standard.
 
-The test set shows similar numbers—R-squared of 0.653, MAE of $1.21. The near-identical performance on unseen data confirms we're not overfitting.
+We also developed a Days on Market model achieving 97.8% accuracy within 7 days—this directly addresses Lornell's second objective for market timing. They can now make informed decisions about when to bid aggressively versus when to wait.
 
-To put this in context: [Point to business context] for our typical 50,000 square-foot property generating $621,500 in annual rent, our average prediction error is about $60,000 per year, or 9.7%. That's within commercial tolerance and vastly better than no model at all.
+To put this in context: [Point to business context] for our typical 50,000 square-foot property generating $621,500 in annual rent, our average prediction error is about $49,500 per year, or 8%. That's within commercial tolerance and a significant improvement over traditional methods.
 
-This scatter plot shows actual vs predicted rents—notice how they cluster tightly along the diagonal. That's what good model fit looks like."
+[Point to callout] All four proposal objectives have been achieved with this system."
 
 **Key Points:**
-- Translate metrics to business language
-- Emphasize the ±10% industry standard
-- Use the scatter plot to visualize performance
+- Neural Network at 76.2% R², MAE under $1
+- 72.4% within ±10% (exceeds industry standard)
+- Days on Market model addresses Objective 2
+- All four objectives achieved
 
 **Transition:** "Performance numbers are great, but let's understand WHAT the model is learning."
 

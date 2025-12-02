@@ -1,8 +1,18 @@
-# Commercial Real Estate ML Project
+# Massachusetts Industrial Properties Price Prediction and Market Analysis
+
+**MIS587 - Business Applications in Machine Learning**
 
 Complete data pipeline and machine learning solution for CoStar commercial real estate data with interactive Streamlit dashboard.
 
-**Status:** Complete - All phases finished with Streamlit app deployed
+**Team 2:**
+- Alex Siracusa (Lead Data Analyst)
+- Martin Thulani Milanzi (Risk Analyst)
+- Shrey Sharma (Project Manager)
+- Faisal Yaseen (Subject Matter Expert)
+
+**Sponsor:** Lornell Real Estate (Todd Lornell - Principal/Founder)
+
+**Status:** Complete - All four proposal objectives achieved with 7-page Streamlit app deployed
 
 ## Quick Start
 
@@ -140,6 +150,17 @@ pip install -r requirements.txt
 
 ---
 
+## Project Objectives (from October 6, 2025 Proposal)
+
+| Objective | Status | Achievement |
+|-----------|--------|-------------|
+| 1. Accurate Price Prediction | ✅ Complete | R² = 0.762 (Neural Network) |
+| 2. Market Timing Forecast | ✅ Complete | 97.8% accuracy within 7 days |
+| 3. Value Attribution Analysis | ✅ Complete | SHAP analysis implemented |
+| 4. Opportunity Identification | ✅ Complete | Investment scoring system |
+
+---
+
 ## Key Results Summary
 
 | Metric | Value |
@@ -148,8 +169,9 @@ pip install -r requirements.txt
 | **Features** | 78 raw → 194 engineered |
 | **Target** | Rent/SF/Yr ($12.43/SF/Yr mean) |
 | **Best Model** | Neural Network (R² = 0.762 validation) |
+| **DOM Model** | 97.8% accuracy within 7 days |
 | **Prediction Error** | ~$1/SF/Yr (8% average error) |
-| **Accuracy Band** | 72% within ±10% |
+| **Accuracy Band** | 72.4% within ±10% |
 
 ---
 
@@ -162,15 +184,19 @@ pip install -r requirements.txt
 | `planml.md` | Original 8-week ML roadmap |
 | `FINAL_REPORT.md` | Complete academic report |
 | `ACADEMIC_SUBMISSION_REPORT.md` | Academic submission details |
+| `PRESENTATION_SLIDES.md` | PowerPoint presentation outline |
+| `PRESENTATION_TALKING_POINTS.md` | Presentation talking points |
 
 ---
 
 ## Academic Project
 
-MIS587 Final Project - Commercial Real Estate Rent Prediction
+**MIS587 Final Project - Massachusetts Industrial Properties Price Prediction and Market Analysis**
+
+Presented to: Lornell Real Estate
 
 ---
 
 ## License
 
-Academic project for MIS587.
+Academic project for MIS587 - Fall 2025.

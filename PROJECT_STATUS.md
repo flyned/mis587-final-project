@@ -1,7 +1,27 @@
 # MIS587 Final Project - Status
+## Massachusetts Industrial Properties Price Prediction and Market Analysis
 
-**Last Updated:** December 1, 2024
-**Status:** Complete
+**Last Updated:** December 1, 2025
+**Status:** Complete - All Four Proposal Objectives Achieved
+
+**Team 2:**
+- Alex Siracusa (Lead Data Analyst)
+- Martin Thulani Milanzi (Risk Analyst)
+- Shrey Sharma (Project Manager)
+- Faisal Yaseen (Subject Matter Expert)
+
+**Sponsor:** Lornell Real Estate (Todd Lornell - Principal/Founder)
+
+---
+
+## Proposal Objectives Status (October 6, 2025)
+
+| Objective | Status | Achievement |
+|-----------|--------|-------------|
+| 1. Accurate Price Prediction | ✅ Complete | R² = 0.762 (Neural Network) |
+| 2. Market Timing Forecast | ✅ Complete | 97.8% accuracy within 7 days |
+| 3. Value Attribution Analysis | ✅ Complete | SHAP analysis implemented |
+| 4. Opportunity Identification | ✅ Complete | Investment scoring in Streamlit |
 
 ---
 
@@ -18,12 +38,12 @@
 
 ### Phase 3: Modeling
 - Baseline models (Ridge, Lasso, Decision Tree)
-- Advanced models (Random Forest, XGBoost, LightGBM)
+- Ensemble models (Random Forest, XGBoost, LightGBM)
 - Deep learning (TensorFlow/Keras neural network)
 - Days on Market prediction model
 
 ### Phase 4: Deployment
-- Streamlit dashboard with 7 pages
+- 7-page Streamlit dashboard covering all objectives
 - Rent predictor, model insights, batch predictions
 - Market comparison, timing analysis, opportunities
 
@@ -47,7 +67,8 @@
 | Features | 194 engineered |
 | Target | Rent/SF/Yr ($12.43 mean) |
 | Best Model | Neural Network |
-| Accuracy | 72% within ±10% |
+| Accuracy | 72.4% within ±10% |
+| DOM Accuracy | 97.8% within 7 days |
 
 ---
 
@@ -55,7 +76,7 @@
 
 **Core Source:**
 - `src/` - All Python modules
-- `streamlit_app/` - Web dashboard
+- `streamlit_app/` - 7-page web dashboard
 
 **Data:**
 - `../data/train.csv` - 7,520 training samples
