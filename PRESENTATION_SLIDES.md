@@ -63,7 +63,7 @@
 - **Source:** CoStar Platform
 - **Properties:** 15,467 records
 - **Original Features:** 272 columns
-- **Geography:** Multiple US markets
+- **Geography:** Massachusetts & New England (6 markets)
 - **Property Type:** Industrial/commercial
 
 **Content - Right Side:**
@@ -229,17 +229,17 @@
 
 **Top 5 Feature Impacts:**
 
-1. **Longitude**
-   - West Coast: +$2 to +$4/SF/Yr
-   - Southeast: -$1 to $0/SF/Yr
+1. **Longitude/Latitude (Location)**
+   - Boston metro: +$1.50 to +$3/SF/Yr
+   - Western MA (Springfield, Pittsfield): -$0.50 to -$1.50/SF/Yr
 
 2. **FEMA Map Date**
    - Recent updates: +$1 to +$3/SF/Yr
    - Proxy for development recency
 
 3. **Property Density (5mi)**
-   - High density: +$0.50 to +$2/SF/Yr
-   - Agglomeration premium
+   - High density (Boston): +$0.50 to +$2/SF/Yr
+   - Sparse areas: -$0.25 to -$0.75/SF/Yr
 
 **Visual:** SHAP summary plot (from `figures/shap_analysis/`)
 
@@ -254,19 +254,20 @@
 **Content - 2 Charts Side-by-Side:**
 
 **Left: Error by Property Type**
-- Warehouse: MAE $1.15, R² 0.694 ✓
-- Industrial: MAE $1.18, R² 0.681 ✓
-- Manufacturing: MAE $1.35, R² 0.642
-- Flex Space: MAE $1.42, R² 0.618
+- Showroom: MAE $0.58, R² 0.900 ✓
+- Warehouse: MAE $0.64, R² 0.871 ✓
+- Service: MAE $0.67, R² 0.839 ✓
+- Manufacturing: MAE $0.77, R² 0.852
 
-**Right: Error by Market Tier**
-- Tier 1 (NYC, LA): MAE $1.45, R² 0.702
-- **Tier 2 (Phoenix, Denver): MAE $1.10, R² 0.683** ⭐
-- Tier 3+: MAE $0.98, R² 0.621
+**Right: Error by Market**
+- **Providence, RI: MAE $0.56, R² 0.653** ⭐ Best
+- **Boston, MA: MAE $0.68, R² 0.748** ⭐
+- Worcester, MA: MAE $0.69, R² 0.738
+- Springfield, MA: MAE $0.85, R² 0.632
 
 **Visual:** Bar charts from `figures/error_segmentation/`
 
-**Insight:** "Best performance in Tier 2 markets with moderate pricing"
+**Insight:** "Best performance in core metro markets (Boston, Providence) with high sample density"
 
 ---
 

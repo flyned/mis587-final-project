@@ -47,7 +47,7 @@ As outlined in our October 6, 2025 proposal to Lornell Real Estate:
 ### 1.3 Scope
 
 - **Data Source:** CoStar commercial real estate platform
-- **Dataset:** 15,467 property records across multiple US markets
+- **Dataset:** 15,467 property records across Massachusetts & New England (6 markets: Boston, Worcester, Providence, Springfield, Barnstable Town, Pittsfield)
 - **Property Type:** Industrial/commercial properties
 - **Target Variable:** Rent per Square Foot per Year (Rent/SF/Yr)
 
@@ -228,20 +228,20 @@ For a typical 50,000 SF property renting at $12.43/SF/year ($621,500 annual rent
 
 **SHAP Value Distributions (Top 5 Features):**
 
-1. **Longitude (-125 to -70):**
-   - West Coast properties: +$2 to +$4/SF/Yr premium
-   - Midwest/Southeast: -$1 to $0/SF/Yr discount
-   - Clear geographic gradient
+1. **Longitude (-73 to -70, New England):**
+   - Boston metro properties: +$1.50 to +$3/SF/Yr premium
+   - Western MA (Springfield, Pittsfield): -$0.50 to -$1.50/SF/Yr
+   - Clear east-west geographic gradient across Massachusetts
 
 2. **FEMA Map Date (Target Encoded):**
    - Recent FEMA updates (2015-2025): +$1 to +$3/SF/Yr
    - Older maps (pre-2010): -$1 to $0/SF/Yr
    - Proxy for development recency
 
-3. **Latitude (25 to 50):**
-   - Southern markets (25-35°): Moderate positive impact
-   - Northern markets (35-50°): Varied by metro tier
-   - Non-linear relationship
+3. **Latitude (41.5 to 42.8, Massachusetts):**
+   - Greater Boston area (~42.3°): Higher rent premium
+   - Southern MA/Rhode Island (~41.8°): Providence area pricing
+   - Relationship captures north-south variation within New England
 
 4. **Property Density (within 5mi):**
    - High density (>100 properties): +$0.50 to +$2/SF/Yr
@@ -269,19 +269,26 @@ For a typical 50,000 SF property renting at $12.43/SF/year ($621,500 annual rent
 
 **Error Segmentation by Property Type:**
 
-| Property Type | Count | MAE | R² | Mean Rent |
-|--------------|-------|-----|-----|-----------|
-| Industrial | 6,234 | $1.18 | 0.681 | $12.50 |
-| Warehouse | 3,892 | $1.15 | 0.694 | $11.80 |
-| Manufacturing | 1,405 | $1.35 | 0.642 | $13.20 |
-| Flex Space | 1,003 | $1.42 | 0.618 | $14.10 |
+| Property Type | Count | MAE | R² |
+|--------------|-------|-----|-----|
+| Showroom | 43 | $0.58 | 0.900 |
+| Warehouse | 1,448 | $0.64 | 0.871 |
+| Service | 227 | $0.67 | 0.839 |
+| Manufacturing | 448 | $0.77 | 0.852 |
+| Food Processing | 34 | $0.96 | 0.780 |
 
-**Error Segmentation by Market Tier:**
-- Tier 1 Markets (e.g., LA, NYC): MAE = $1.45, R² = 0.702
-- Tier 2 Markets (e.g., Phoenix, Denver): MAE = $1.10, R² = 0.683
-- Tier 3+ Markets: MAE = $0.98, R² = 0.621
+**Error Segmentation by Market:**
 
-**Insight:** Model performs best in Tier 2 markets with moderate pricing and adequate data representation.
+| Market | Count | MAE | R² |
+|--------|-------|-----|-----|
+| Providence, RI | 277 | $0.56 | 0.653 |
+| Boston, MA | 1,403 | $0.68 | 0.748 |
+| Worcester, MA | 377 | $0.69 | 0.738 |
+| Pittsfield, MA | 63 | $0.69 | 0.562 |
+| Barnstable Town, MA | 95 | $0.71 | 0.530 |
+| Springfield, MA | 250 | $0.85 | 0.632 |
+
+**Insight:** Model performs best in core New England metros (Providence, Boston) with high sample density. Western Massachusetts markets (Springfield) show higher error due to different market dynamics and smaller sample sizes.
 
 ---
 

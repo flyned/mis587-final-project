@@ -81,7 +81,7 @@ These weren't just technical goals—each one was a specific request from our cl
 
 "Our data came from CoStar, which is the industry-leading platform for commercial real estate data. They're essentially the Bloomberg of real estate.
 
-We started with 15,467 property records spanning multiple US markets, with 272 original features covering everything from building size and age to amenities, location, and financial metrics.
+We started with 15,467 property records spanning Massachusetts and New England—covering six markets including Boston, Worcester, Providence, Springfield, Barnstable Town, and Pittsfield—with 272 original features covering everything from building size and age to amenities, location, and financial metrics.
 
 But here's the key—raw data is messy. After rigorous cleaning and deduplication, we ended up with 12,534 unique properties. Why the reduction? Same properties often appear multiple times in the dataset with different listing dates. We had to deduplicate to prevent data leakage—which I'll explain in a moment.
 
@@ -245,11 +245,11 @@ Why does this matter? In regulated industries or high-stakes decisions, stakehol
 
 Let me walk through the top features:
 
-**Longitude—**the further west you go, the higher the rent premium. West Coast properties add $2 to $4 per square foot compared to Southeast markets where it's neutral to negative. This SHAP plot shows that relationship clearly.
+**Location (Longitude/Latitude)—**properties in the Boston metro area command significantly higher rents, adding $1.50 to $3 per square foot compared to western Massachusetts markets like Springfield and Pittsfield where rents are $0.50 to $1.50 lower. This SHAP plot shows that geographic relationship clearly.
 
 **FEMA Map Date—**recent flood map updates (2015 to 2025) add $1 to $3 per square foot. Older maps correlate with older development, which tends to have lower rents. It's not about flood risk—it's a proxy for investment recency.
 
-**Property Density—**high-density areas with more than 100 nearby properties command a $0.50 to $2 premium per square foot. This is the agglomeration effect—businesses benefit from proximity to suppliers, customers, and labor pools.
+**Property Density—**high-density areas like Boston with more than 100 nearby properties command a $0.50 to $2 premium per square foot. This is the agglomeration effect—businesses benefit from proximity to suppliers, customers, and labor pools.
 
 [Point to visualization] This SHAP summary plot shows the distribution of impacts across all features. Red dots are high feature values, blue are low. The x-axis shows the impact on rent prediction.
 
@@ -272,21 +272,21 @@ This transparency is critical for adoption. Stakeholders won't trust a black box
 
 "Understanding where your model fails is just as important as celebrating where it succeeds.
 
-We segmented errors by property type and market tier to find patterns.
+We segmented errors by property type and market to find patterns.
 
-**By property type:** [Point to left chart] The model performs best on Warehouses—$1.15 MAE and R-squared of 0.694. Standard industrial properties are similar. But Flex Space—which combines office and warehouse—is trickier, with MAE of $1.42. Why? Flex properties are more heterogeneous, making them harder to predict from standard features.
+**By property type:** [Point to left chart] The model performs best on Showrooms—$0.58 MAE and R-squared of 0.90—and Warehouses at $0.64 MAE with R-squared of 0.87. These are the bread-and-butter industrial property types with consistent characteristics. Food Processing properties are trickier, with MAE of $0.96. Why? Specialized properties have more heterogeneous characteristics, making them harder to predict from standard features.
 
-**By market tier:** [Point to right chart] Here's a surprising finding. The model performs BEST in Tier 2 markets like Phoenix and Denver—MAE of just $1.10. Tier 1 markets like New York and Los Angeles have higher error ($1.45) despite better R-squared.
+**By market:** [Point to right chart] Here's an interesting finding. The model performs BEST in Providence, RI—MAE of just $0.56—and Boston at $0.68 MAE. These core metro markets have the highest sample density in our training data, allowing the model to learn robust patterns.
 
-Why? Tier 1 markets have more pricing complexity—unique properties, rapid market shifts, and extreme values. Tier 3 smaller markets have good MAE but lower R-squared—there's less variation to explain in the first place.
+Springfield, MA has higher error ($0.85 MAE) with lower R-squared (0.63). Why? Western Massachusetts has different market dynamics and less data for the model to learn from.
 
-The business insight: [Point to callout] This model is most reliable for standard warehouse/industrial properties in mid-tier markets. For specialty properties or extreme markets, use predictions with caution and wider confidence intervals.
+The business insight: [Point to callout] This model is most reliable for standard warehouse/industrial properties in core New England metros like Boston and Providence. For specialty properties or smaller markets like Springfield and Pittsfield, use predictions with caution and wider confidence intervals.
 
 Knowing your model's limitations builds credibility."
 
 **Key Points:**
 - Frame errors as insights, not failures
-- Explain counter-intuitive results (Tier 2 > Tier 1)
+- Explain geographic patterns (core metros vs. western MA)
 - Give actionable guidance (where to trust the model)
 
 **Transition:** "Now let me show you how stakeholders actually use this model—through our web application."
@@ -307,7 +307,7 @@ The app has five main pages: [Point to screenshots]
 
 **Batch Prediction** lets users upload a CSV file with hundreds of properties and get predictions for all of them at once. This is critical for portfolio analysis—imagine valuing 500 properties in under a minute instead of 500 × 6 hours.
 
-**Market Comparison** is my favorite feature. You can define a hypothetical property and ask: 'What would this property rent for in Phoenix versus Seattle versus Atlanta?' It shows geographic rent arbitrage opportunities.
+**Market Comparison** is my favorite feature. You can define a hypothetical property and ask: 'What would this property rent for in Boston versus Worcester versus Springfield?' It shows geographic rent differences across the New England markets in our dataset.
 
 **About** documents the methodology, data sources, and model performance—full transparency.
 
