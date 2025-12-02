@@ -210,7 +210,7 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.caption("Built with  for Lornell Real Estate | Powered by AI & Data Science")
+    st.caption("MIS587: Business Applications in Machine Learning F25 - Team 2")
 
 if __name__ == "__main__":
     main()

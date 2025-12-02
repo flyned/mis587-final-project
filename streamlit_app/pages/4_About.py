@@ -454,4 +454,4 @@ with tab5:
 
     st.markdown("---")
     st.markdown("**Model Version:** 2.0 | **Last Updated:** December 2025")
-    st.caption("Built with  for Lornell Real Estate | Powered by Python, Streamlit, TensorFlow & scikit-learn")
+    st.caption("MIS587: Business Applications in Machine Learning F25 - Team 2")
