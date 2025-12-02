@@ -251,6 +251,11 @@
 
 **Visual:** SHAP summary plot (from `figures/shap_analysis/`)
 
+**Technical Note:**
+- Random Forest: TreeExplainer (fast, exact)
+- Neural Network: DeepExplainer (gradient-based attribution)
+- Consistent explanations across both model types
+
 **Takeaway:** "Every prediction comes with explanation"
 
 ---
