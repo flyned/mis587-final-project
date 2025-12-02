@@ -73,6 +73,16 @@ model_dir = project_dir / "models"
 has_rf_model = len(list(model_dir.glob("rf_model_local_*.pkl"))) > 0
 has_nn_model = len(list(model_dir.glob("nn_model_*.keras"))) > 0
 
+# Check if TensorFlow is available (for Neural Network support)
+tensorflow_available = False
+if has_nn_model:
+    try:
+        import tensorflow
+        tensorflow_available = True
+    except (ImportError, Exception) as e:
+        tensorflow_available = False
+        has_nn_model = False  # Disable NN option if TensorFlow not available
+
 # Model selection in sidebar
 with st.sidebar:
     st.markdown("### Model Selection")
@@ -81,13 +91,21 @@ with st.sidebar:
     model_options = []
     model_option_labels = []
 
-    if has_nn_model:
+    if has_nn_model and tensorflow_available:
         model_options.append("neural_network")
-        model_option_labels.append("Neural Network (Default - Best Accuracy)")
+        model_option_labels.append("Neural Network (Best Accuracy)")
 
     if has_rf_model:
         model_options.append("random_forest")
-        model_option_labels.append("Random Forest")
+        # Mark as default if NN not available
+        if not (has_nn_model and tensorflow_available):
+            model_option_labels.append("Random Forest (Default)")
+        else:
+            model_option_labels.append("Random Forest")
+
+    # Show warning if TensorFlow not available
+    if not tensorflow_available and len(list(model_dir.glob("nn_model_*.keras"))) > 0:
+        st.warning("Neural Network unavailable (TensorFlow not installed or incompatible)")
 
     if not model_options:
         st.error("No trained models found. Please train a model first.")

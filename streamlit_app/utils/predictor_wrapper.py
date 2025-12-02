@@ -49,11 +49,16 @@ def load_model_and_metadata(model_path, metadata_path):
         try:
             from tensorflow import keras
             from sklearn.preprocessing import StandardScaler
-        except ImportError:
+        except ImportError as e:
             raise ImportError("TensorFlow required for neural network models. "
                             "Install with: pip install tensorflow>=2.13.0")
+        except Exception as e:
+            raise ImportError(f"TensorFlow failed to load (possible protobuf conflict): {e}")
 
-        model = keras.models.load_model(model_path)
+        try:
+            model = keras.models.load_model(model_path)
+        except Exception as e:
+            raise RuntimeError(f"Failed to load Keras model: {e}")
 
         # Store model type in metadata for downstream use
         metadata['_model_type'] = 'neural_network'
