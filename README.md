@@ -113,10 +113,10 @@ pip install -r requirements.txt
 ### Random Forest (More Stable)
 | Metric | Validation | Test |
 |--------|-----------|------|
-| **R²** | 0.676 | 0.656 |
-| **MAE** | $1.20/SF/Yr | $1.21/SF/Yr |
-| **MAPE** | 10.9% | 10.9% |
-| **Within ±10%** | 65.3% | 64.0% |
+| **R²** | 0.640 | 0.623 |
+| **MAE** | $1.24/SF/Yr | $1.24/SF/Yr |
+| **MAPE** | 11.3% | 11.2% |
+| **Within ±10%** | 64.2% | 64.0% |
 
 **Business Interpretation:**
 - Average rent in dataset: $12.43/SF/Yr

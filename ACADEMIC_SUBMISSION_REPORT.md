@@ -150,17 +150,17 @@ Evaluated 7 algorithms from baseline to deep learning:
 | Model | Val R² | Val MAE | Test R² | Test MAE | Within ±10% |
 |-------|--------|---------|---------|----------|-------------|
 | **Neural Network** | **0.762** | **$0.99** | **0.615** | **$1.04** | **72.4%** |
-| Random Forest | 0.676 | $1.20 | 0.656 | $1.21 | 65.3% |
-| LightGBM | 0.671 | $1.22 | 0.651 | $1.23 | 64.8% |
-| XGBoost | 0.668 | $1.24 | 0.649 | $1.25 | 64.2% |
-| Ridge Regression | 0.653 | $1.32 | 0.641 | $1.35 | 61.5% |
-| Lasso Regression | 0.652 | $1.32 | 0.640 | $1.36 | 61.2% |
-| Decision Tree | 0.512 | $1.68 | 0.498 | $1.72 | 52.4% |
+| Random Forest | 0.640 | $1.24 | 0.623 | $1.24 | 64.2% |
+| LightGBM | 0.635 | $1.26 | 0.618 | $1.27 | 63.5% |
+| XGBoost | 0.632 | $1.28 | 0.615 | $1.29 | 63.0% |
+| Ridge Regression | 0.617 | $1.36 | 0.605 | $1.39 | 60.5% |
+| Lasso Regression | 0.616 | $1.36 | 0.604 | $1.40 | 60.2% |
+| Decision Tree | 0.476 | $1.72 | 0.462 | $1.76 | 51.4% |
 
 **Champion Model:** Neural Network (TensorFlow/Keras) selected for:
 1. Best validation performance (R² = 0.762)
 2. Captures complex non-linear relationships
-3. 8.6% improvement over Random Forest
+3. 19% improvement over Random Forest
 4. Architecture: 256→128→64→1 with ReLU and Dropout
 
 **Days on Market Model:** Specialized model for Objective 2:
@@ -353,11 +353,11 @@ Developed interactive application with 7 pages addressing all four proposal obje
   "model_type": "RandomForestRegressor",
   "training_samples": 7520,
   "validation_metrics": {
-    "mae": 1.20,
-    "rmse": 1.61,
-    "r2": 0.676,
-    "mape": 10.99,
-    "within_10pct": 0.645
+    "mae": 1.24,
+    "rmse": 1.70,
+    "r2": 0.640,
+    "mape": 11.29,
+    "within_10pct": 0.642
   }
 }
 ```
@@ -398,7 +398,7 @@ Developed interactive application with 7 pages addressing all four proposal obje
 ### 5.3 Future Enhancements
 
 **Short-term (0-3 months):**
-- Hyperparameter tuning for production model (improve R² from 0.676 to 0.70+)
+- Hyperparameter tuning for production model (improve R² from 0.640 to 0.70+)
 - Deploy to cloud (AWS/GCP) for remote access
 - Add Days-on-Market prediction as secondary target
 
@@ -453,7 +453,7 @@ Developed interactive application with 7 pages addressing all four proposal obje
 - Implemented feature importance filtering (top 50 features)
 - SHAP analysis for human-interpretable explanations
 - Cross-validation to detect overfitting
-- **Result:** Minimal train-test gap (R² 0.676 val vs 0.653 test)
+- **Result:** Minimal train-test gap (R² 0.640 val vs 0.623 test)
 
 ---
 

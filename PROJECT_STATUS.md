@@ -54,7 +54,7 @@
 | Model | Validation R² | Test R² | MAE |
 |-------|--------------|---------|-----|
 | Neural Network | 0.762 | 0.615 | $0.99/SF |
-| Random Forest | 0.676 | 0.656 | $1.20/SF |
+| Random Forest | 0.640 | 0.623 | $1.24/SF |
 | Days on Market | - | - | 97.8% within 7 days |
 
 ---
@@ -64,7 +64,7 @@
 | Metric | Value |
 |--------|-------|
 | Dataset | 12,534 unique properties |
-| Features | 194 engineered |
+| Features | 192 engineered |
 | Target | Rent/SF/Yr ($12.43 mean) |
 | Best Model | Neural Network |
 | Accuracy | 72.4% within ±10% |

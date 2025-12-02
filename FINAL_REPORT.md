@@ -292,17 +292,17 @@ The Neural Network achieved the best validation performance, demonstrating the v
 | Model | Val R² | Val MAE | Test R² | Test MAE | Within ±10% |
 |-------|--------|---------|---------|----------|-------------|
 | **Neural Network** | **0.762** | **$0.99** | **0.615** | **$1.04** | **72.4%** |
-| Random Forest | 0.676 | $1.20 | 0.656 | $1.21 | 65.3% |
-| LightGBM | 0.671 | $1.22 | 0.651 | $1.23 | 64.8% |
-| XGBoost | 0.668 | $1.24 | 0.649 | $1.25 | 64.2% |
-| Ridge Regression | 0.653 | $1.32 | 0.641 | $1.35 | 61.5% |
-| Lasso Regression | 0.652 | $1.32 | 0.640 | $1.36 | 61.2% |
-| Decision Tree | 0.512 | $1.68 | 0.498 | $1.72 | 52.4% |
+| Random Forest | 0.640 | $1.24 | 0.623 | $1.24 | 64.2% |
+| LightGBM | 0.635 | $1.26 | 0.618 | $1.27 | 63.5% |
+| XGBoost | 0.632 | $1.28 | 0.615 | $1.29 | 63.0% |
+| Ridge Regression | 0.617 | $1.36 | 0.605 | $1.39 | 60.5% |
+| Lasso Regression | 0.616 | $1.36 | 0.604 | $1.40 | 60.2% |
+| Decision Tree | 0.476 | $1.72 | 0.462 | $1.76 | 51.4% |
 
 **Key Findings:**
 - Neural Network outperforms all other models with highest validation R² (0.762)
-- 8.6% improvement in validation R² over Random Forest (0.762 vs 0.676)
-- 17% reduction in MAE compared to Random Forest ($0.99 vs $1.20)
+- 19% improvement in validation R² over Random Forest (0.762 vs 0.640)
+- 20% reduction in MAE compared to Random Forest ($0.99 vs $1.24)
 - Deep learning captures complex non-linear relationships traditional methods miss
 - Random Forest provides more stable test performance (smaller val-test gap), making it suitable for production interpretability
 
@@ -477,7 +477,7 @@ This transparency builds stakeholder trust and enables actionable insights.
 | Pittsfield, MA | 63 | $0.69 | 7.6% | 0.562 | Average |
 | Barnstable Town, MA | 95 | $0.71 | 5.0% | 0.530 | Average |
 | Springfield, MA | 250 | $0.85 | 11.3% | 0.632 | Below Average |
-| **Overall** | **2,507** | **$1.20** | **11.0%** | **0.676** | **Average** |
+| **Overall** | **2,507** | **$1.24** | **11.3%** | **0.640** | **Average** |
 
 **Insights:**
 - Providence and Boston have best prediction accuracy
@@ -1029,10 +1029,10 @@ This project successfully developed a production-ready machine learning system f
 
 **Technical Accomplishments:**
 - ✅ Processed 15,467 property records into clean, analysis-ready dataset
-- ✅ Engineered 194 predictive features from 78 raw variables
+- ✅ Engineered 192 predictive features from 78 raw variables
 - ✅ Trained and evaluated 7 machine learning models
 - ✅ Achieved 76% accuracy (R² = 0.762) with Neural Network, $0.99/SF/Yr MAE
-- ✅ Random Forest backup model: R² = 0.676, MAE = $1.20/SF/Yr
+- ✅ Random Forest backup model: R² = 0.640, MAE = $1.24/SF/Yr
 - ✅ Implemented SHAP analysis for model interpretability
 - ✅ Reduced memory requirements by 99.5% (70GB → 384MB)
 - ✅ Deployed interactive 7-page Streamlit web application

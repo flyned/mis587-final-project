@@ -162,7 +162,7 @@ Here's the key insight: [Point to callout box] 40% of our top 20 most important 
 
 [Point to table] Here's the head-to-head comparison. Our champion model is the Neural Network with R-squared of 0.762 and Mean Absolute Error of just 99 cents per square foot per year.
 
-That's an 8.6% improvement over Random Forest, which was at 0.676. The Neural Network's architecture—256, 128, 64 neurons with dropout—captures complex non-linear relationships that tree-based methods miss.
+That's a 19% improvement over Random Forest, which was at 0.640. The Neural Network's architecture—256, 128, 64 neurons with dropout—captures complex non-linear relationships that tree-based methods miss.
 
 Random Forest still provides value for interpretability and has a smaller validation-to-test gap, so we keep both models available.
 
@@ -172,7 +172,7 @@ Most importantly, we also developed a Days on Market model that achieves 97.8% a
 
 **Key Points:**
 - Neural Network is the champion at 0.762 R²
-- Emphasize the 8.6% improvement over Random Forest
+- Emphasize the 19% improvement over Random Forest
 - Highlight Days on Market model (Objective 2)
 - Connect back to 100% objective completion
 
@@ -399,9 +399,9 @@ These challenges taught me more than any textbook. Real-world ML is 20% modeling
 
 **Achievements:** [Point to checkmarks]
 
-We built a production-ready machine learning system from scratch. The Random Forest model achieves R-squared of 0.676 and Mean Absolute Error of $1.20 per square foot—meeting commercial real estate accuracy standards.
+We built a production-ready machine learning system from scratch. The Random Forest model achieves R-squared of 0.640 and Mean Absolute Error of $1.24 per square foot—meeting commercial real estate accuracy standards.
 
-We engineered 195 features through a systematic six-phase pipeline, implemented SHAP analysis for interpretability, and deployed an interactive web application that real analysts could use today.
+We engineered 192 features through a systematic six-phase pipeline, implemented SHAP analysis for interpretability, and deployed an interactive web application that real analysts could use today.
 
 We generated 29 visualizations and comprehensive documentation. This isn't a toy project—it's a complete system.
 
@@ -437,7 +437,7 @@ Thank you. I'm happy to answer questions."
 
 **Q: "Why Random Forest over XGBoost/LightGBM which are often better?"**
 
-A: "Great question. XGBoost and LightGBM actually performed nearly identically to Random Forest—R-squared of 0.668 and 0.671 versus 0.676. The difference is marginal. I chose Random Forest because it's more interpretable, has fewer hyperparameters to tune, and the built-in feature importance works seamlessly with SHAP. For a 1% performance difference, I prioritized explainability."
+A: "Great question. XGBoost and LightGBM actually performed nearly identically to Random Forest—R-squared of 0.632 and 0.635 versus 0.640. The difference is marginal. I chose Random Forest because it's more interpretable, has fewer hyperparameters to tune, and the built-in feature importance works seamlessly with SHAP. For a 1% performance difference, I prioritized explainability."
 
 **Q: "How did you choose the 60/20/20 split ratio?"**
 
