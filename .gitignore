@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files (large - stored externally)
+../data/
+
+# Models (large - can be regenerated)
+models/*.pkl
+models/*.keras
+models/*.joblib
+models/*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+venv/
+env/
+ENV/
+
+# Claude Code
+.claude/
+
+# TensorFlow
+*.h5
+logs/
+
+# Streamlit
+streamlit_app/.streamlit/secrets.toml

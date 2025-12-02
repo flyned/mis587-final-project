@@ -1,0 +1,171 @@
+{
+  "timestamp": "2025-11-29T17:33:13.680285",
+  "validations": {
+    "overfitting": {
+      "validator": "overfitting_detection",
+      "passed": false,
+      "errors": [
+        "Overfitting detected: Val MAE (0.893) is 1.78x Train MAE (0.502). Expected ratio < 1.3"
+      ],
+      "warnings": [
+        "Possible overfitting: R\u00b2 difference is 0.1315 (threshold: 0.15)"
+      ],
+      "info": {
+        "message": "Overfitting detected"
+      },
+      "metrics": {
+        "train_mae": 0.502,
+        "val_mae": 0.893,
+        "train_rmse": 0.779,
+        "val_rmse": 1.299,
+        "train_r2": 0.9215,
+        "val_r2": 0.7901,
+        "mae_ratio": 1.779,
+        "r2_diff": 0.1315
+      }
+    },
+    "residuals": {
+      "validator": "residual_analysis_Validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Residuals may not be normally distributed (Shapiro p=0.0000)",
+        "Residuals have heavy tails: kurtosis = 4.8464"
+      ],
+      "info": {
+        "message": "Some residual issues detected"
+      },
+      "metrics": {
+        "mean_residual": 0.0736,
+        "std_residual": 1.297,
+        "shapiro_p_value": 0.0,
+        "skewness": -0.4463,
+        "kurtosis": 4.8464,
+        "variance_ratio": 1.798,
+        "outlier_count": "46",
+        "outlier_pct": 1.83
+      }
+    },
+    "prediction_distribution": {
+      "validator": "prediction_distribution",
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "message": "Predictions in reasonable range"
+      },
+      "metrics": {
+        "pred_min": 5.458,
+        "pred_max": 19.008,
+        "pred_mean": 12.355,
+        "true_mean": 12.428,
+        "mean_diff_pct": 0.59,
+        "pred_std": 2.363,
+        "true_std": 2.835,
+        "std_ratio": 0.834
+      }
+    },
+    "feature_importance": {
+      "validator": "feature_importance",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Single feature dominates: 'Longitude' accounts for 50.5% of total importance - possible feature leakage or overly dominant feature"
+      ],
+      "info": {
+        "top_features": [
+          {
+            "feature": "Longitude",
+            "importance": 0.5045830361537208
+          },
+          {
+            "feature": "Latitude",
+            "importance": 0.15300673863531455
+          },
+          {
+            "feature": "dist_to_market_center",
+            "importance": 0.058606999380172636
+          },
+          {
+            "feature": "Origination Date_target_encoded",
+            "importance": 0.05188998760447449
+          },
+          {
+            "feature": "properties_within_5mi",
+            "importance": 0.03143138523765591
+          },
+          {
+            "feature": "Rent/SF/Yr_is_outlier_high",
+            "importance": 0.02704834866956976
+          },
+          {
+            "feature": "Rent/SF/Yr_is_outlier_low",
+            "importance": 0.02661749228778247
+          },
+          {
+            "feature": "RBA",
+            "importance": 0.01583911893481129
+          },
+          {
+            "feature": "Typical Floor Size",
+            "importance": 0.010542048190997074
+          },
+          {
+            "feature": "Secondary Type_Warehouse",
+            "importance": 0.0066852995353007295
+          },
+          {
+            "feature": "distance_age_interaction",
+            "importance": 0.005630238298625926
+          },
+          {
+            "feature": "FEMA Map Date_frequency",
+            "importance": 0.005485496114205812
+          },
+          {
+            "feature": "rent_per_parking",
+            "importance": 0.005139532674389175
+          },
+          {
+            "feature": "properties_within_1mi",
+            "importance": 0.00509243741332715
+          },
+          {
+            "feature": "Parking Ratio",
+            "importance": 0.004819175623871262
+          },
+          {
+            "feature": "Origination Date_frequency",
+            "importance": 0.004010831885284748
+          },
+          {
+            "feature": "Ceiling Ht",
+            "importance": 0.0037218997954381592
+          },
+          {
+            "feature": "Year Built",
+            "importance": 0.003021712375843542
+          },
+          {
+            "feature": "Building Tax Expenses",
+            "importance": 0.002991752777437395
+          },
+          {
+            "feature": "Building Operating Expenses",
+            "importance": 0.0027014765097443843
+          }
+        ],
+        "message": "Feature importances look reasonable"
+      },
+      "metrics": {
+        "max_importance_ratio": 0.5046,
+        "zero_importance_count": "9",
+        "zero_importance_pct": 4.64,
+        "importance_cv": 7.3978
+      }
+    }
+  },
+  "all_passed": false,
+  "total_errors": 1,
+  "total_warnings": 4
+}

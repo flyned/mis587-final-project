@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-11-29T17:33:07.558274",
+  "stage": "split",
+  "validations": {
+    "data_leakage": {
+      "validator": "data_leakage_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "train_unique_keys": 7520,
+        "val_unique_keys": 2507,
+        "test_unique_keys": 2506,
+        "message": "No data leakage detected - all splits have unique keys"
+      }
+    },
+    "stratification": {
+      "validator": "stratification_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "stratify_column": "Market Name",
+        "num_categories": 7,
+        "max_train_deviation": 0.0001,
+        "max_val_deviation": 0.0002,
+        "max_test_deviation": 0.0002
+      }
+    },
+    "proportions": {
+      "validator": "split_proportion_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "total_samples": 12534,
+        "train_size": 7520,
+        "val_size": 2507,
+        "test_size": 2507,
+        "actual_ratios": [
+          0.6,
+          0.2,
+          0.2
+        ],
+        "expected_ratios": [
+          0.6,
+          0.2,
+          0.2
+        ]
+      }
+    },
+    "target_distribution": {
+      "validator": "target_distribution_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "target_column": "Rent/SF/Yr",
+        "train_mean": 12.43,
+        "val_mean": 12.47,
+        "test_mean": 12.49,
+        "overall_mean": 12.45,
+        "train_deviation": 0.002,
+        "val_deviation": 0.002,
+        "test_deviation": 0.003
+      }
+    }
+  },
+  "all_passed": true,
+  "total_errors": 0,
+  "total_warnings": 0
+}

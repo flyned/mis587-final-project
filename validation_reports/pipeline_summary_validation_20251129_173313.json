@@ -1,0 +1,444 @@
+{
+  "timestamp": "2025-11-29T17:33:13.854820",
+  "pipeline_status": "completed",
+  "stages": {
+    "clean_data": {
+      "timestamp": "2025-11-29T17:33:07.356060",
+      "stage": "clean",
+      "validations": {
+        "schema": {
+          "validator": "schema_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "info": {
+            "num_rows": 15467,
+            "num_columns": 87,
+            "non_datetime_date_col": "Origination Date"
+          }
+        },
+        "data_quality": {
+          "validator": "data_quality_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "5 columns with >95% missing: ['Avg Rent-Direct (Office)', 'Rail Lines', 'For Sale Price', 'Avg Rent-Direct (Industrial)', 'Average Weighted Rent']...",
+            "4 columns with zero variance: ['State', 'Continent', 'Country', 'Subcontinent']",
+            "1846 duplicate rows (11.94%)",
+            "1 columns with >10% outliers"
+          ],
+          "info": {
+            "high_missing_columns": {
+              "Avg Rent-Direct (Office)": 99.35346220986617,
+              "Rail Lines": 99.1077778496153,
+              "For Sale Price": 98.30607098984936,
+              "Avg Rent-Direct (Industrial)": 97.60781017650481,
+              "Average Weighted Rent": 97.16169910131246
+            },
+            "overall_missing_pct": 31.62,
+            "zero_variance_columns": [
+              "State",
+              "Continent",
+              "Country",
+              "Subcontinent"
+            ],
+            "num_duplicates": "1846",
+            "columns_with_high_outliers": {
+              "Origination Amount": {
+                "count": "468",
+                "percentage": 10.59,
+                "bounds": [
+                  -5542000.0,
+                  8531500.0
+                ]
+              }
+            }
+          }
+        },
+        "business_rules": {
+          "validator": "business_rules_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "Year Built: 7 values outside range [1800-2030]",
+            "Market Name: 235 missing values (1.5%)",
+            "Building Class: 110 values not in [A, B, C, unknown]",
+            "Logical inconsistency: 13 properties with Available Space > RBA"
+          ],
+          "info": {}
+        }
+      },
+      "all_passed": true,
+      "total_errors": 0,
+      "total_warnings": 8
+    },
+    "data_splits": {
+      "timestamp": "2025-11-29T17:33:07.558274",
+      "stage": "split",
+      "validations": {
+        "data_leakage": {
+          "validator": "data_leakage_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "info": {
+            "train_unique_keys": 7520,
+            "val_unique_keys": 2507,
+            "test_unique_keys": 2506,
+            "message": "No data leakage detected - all splits have unique keys"
+          }
+        },
+        "stratification": {
+          "validator": "stratification_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "info": {
+            "stratify_column": "Market Name",
+            "num_categories": 7,
+            "max_train_deviation": 0.0001,
+            "max_val_deviation": 0.0002,
+            "max_test_deviation": 0.0002
+          }
+        },
+        "proportions": {
+          "validator": "split_proportion_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "info": {
+            "total_samples": 12534,
+            "train_size": 7520,
+            "val_size": 2507,
+            "test_size": 2507,
+            "actual_ratios": [
+              0.6,
+              0.2,
+              0.2
+            ],
+            "expected_ratios": [
+              0.6,
+              0.2,
+              0.2
+            ]
+          }
+        },
+        "target_distribution": {
+          "validator": "target_distribution_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "info": {
+            "target_column": "Rent/SF/Yr",
+            "train_mean": 12.43,
+            "val_mean": 12.47,
+            "test_mean": 12.49,
+            "overall_mean": 12.45,
+            "train_deviation": 0.002,
+            "val_deviation": 0.002,
+            "test_deviation": 0.003
+          }
+        }
+      },
+      "all_passed": true,
+      "total_errors": 0,
+      "total_warnings": 0
+    },
+    "engineered_features": {
+      "timestamp": "2025-11-29T17:33:10.845102",
+      "stage": "engineered",
+      "validations": {
+        "schema": {
+          "validator": "schema_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "Column 'Property Address' has very high cardinality (100.0%) - likely an identifier"
+          ],
+          "info": {
+            "num_rows": 7520,
+            "num_columns": 114,
+            "non_datetime_date_col": "Origination Date"
+          }
+        },
+        "data_quality": {
+          "validator": "data_quality_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "5 columns with zero variance: ['Number Of Stories_is_outlier_low', 'Parking Ratio_is_outlier_low', 'Percent Leased_is_outlier_low', 'Percent Leased_is_outlier_high', 'Taxes Per SF_is_outlier_low']",
+            "5 columns with >10% outliers"
+          ],
+          "info": {
+            "overall_missing_pct": 3.06,
+            "zero_variance_columns": [
+              "Number Of Stories_is_outlier_low",
+              "Parking Ratio_is_outlier_low",
+              "Percent Leased_is_outlier_low",
+              "Percent Leased_is_outlier_high",
+              "Taxes Per SF_is_outlier_low"
+            ],
+            "columns_with_high_outliers": {
+              "Origination Amount": {
+                "count": "251",
+                "percentage": 11.34,
+                "bounds": [
+                  -5540000.0,
+                  8530000.0
+                ]
+              },
+              "years_since_sale": {
+                "count": "2764",
+                "percentage": 36.76,
+                "bounds": [
+                  5.22,
+                  11.38
+                ]
+              },
+              "sale_month_sin": {
+                "count": "3056",
+                "percentage": 40.64,
+                "bounds": [
+                  -0.0,
+                  0.0
+                ]
+              },
+              "sale_month_cos": {
+                "count": "3272",
+                "percentage": 43.51,
+                "bounds": [
+                  -0.0,
+                  0.0
+                ]
+              },
+              "Zoning_target_encoded": {
+                "count": "765",
+                "percentage": 10.17,
+                "bounds": [
+                  11.19,
+                  13.68
+                ]
+              }
+            }
+          }
+        },
+        "business_rules": {
+          "validator": "business_rules_validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "Year Built: 5 values outside range [1800-2030]",
+            "Building Class: 42 values not in [A, B, C, unknown]"
+          ],
+          "info": {}
+        }
+      },
+      "all_passed": true,
+      "total_errors": 0,
+      "total_warnings": 5
+    },
+    "model_validation": {
+      "timestamp": "2025-11-29T17:33:13.680285",
+      "validations": {
+        "overfitting": {
+          "validator": "overfitting_detection",
+          "passed": false,
+          "errors": [
+            "Overfitting detected: Val MAE (0.893) is 1.78x Train MAE (0.502). Expected ratio < 1.3"
+          ],
+          "warnings": [
+            "Possible overfitting: R\u00b2 difference is 0.1315 (threshold: 0.15)"
+          ],
+          "info": {
+            "message": "Overfitting detected"
+          },
+          "metrics": {
+            "train_mae": 0.502,
+            "val_mae": 0.893,
+            "train_rmse": 0.779,
+            "val_rmse": 1.299,
+            "train_r2": 0.9215,
+            "val_r2": 0.7901,
+            "mae_ratio": 1.779,
+            "r2_diff": 0.1315
+          }
+        },
+        "residuals": {
+          "validator": "residual_analysis_Validation",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "Residuals may not be normally distributed (Shapiro p=0.0000)",
+            "Residuals have heavy tails: kurtosis = 4.8464"
+          ],
+          "info": {
+            "message": "Some residual issues detected"
+          },
+          "metrics": {
+            "mean_residual": 0.0736,
+            "std_residual": 1.297,
+            "shapiro_p_value": 0.0,
+            "skewness": -0.4463,
+            "kurtosis": 4.8464,
+            "variance_ratio": 1.798,
+            "outlier_count": "46",
+            "outlier_pct": 1.83
+          }
+        },
+        "prediction_distribution": {
+          "validator": "prediction_distribution",
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "info": {
+            "message": "Predictions in reasonable range"
+          },
+          "metrics": {
+            "pred_min": 5.458,
+            "pred_max": 19.008,
+            "pred_mean": 12.355,
+            "true_mean": 12.428,
+            "mean_diff_pct": 0.59,
+            "pred_std": 2.363,
+            "true_std": 2.835,
+            "std_ratio": 0.834
+          }
+        },
+        "feature_importance": {
+          "validator": "feature_importance",
+          "passed": true,
+          "errors": [],
+          "warnings": [
+            "Single feature dominates: 'Longitude' accounts for 50.5% of total importance - possible feature leakage or overly dominant feature"
+          ],
+          "info": {
+            "top_features": [
+              {
+                "feature": "Longitude",
+                "importance": 0.5045830361537208
+              },
+              {
+                "feature": "Latitude",
+                "importance": 0.15300673863531455
+              },
+              {
+                "feature": "dist_to_market_center",
+                "importance": 0.058606999380172636
+              },
+              {
+                "feature": "Origination Date_target_encoded",
+                "importance": 0.05188998760447449
+              },
+              {
+                "feature": "properties_within_5mi",
+                "importance": 0.03143138523765591
+              },
+              {
+                "feature": "Rent/SF/Yr_is_outlier_high",
+                "importance": 0.02704834866956976
+              },
+              {
+                "feature": "Rent/SF/Yr_is_outlier_low",
+                "importance": 0.02661749228778247
+              },
+              {
+                "feature": "RBA",
+                "importance": 0.01583911893481129
+              },
+              {
+                "feature": "Typical Floor Size",
+                "importance": 0.010542048190997074
+              },
+              {
+                "feature": "Secondary Type_Warehouse",
+                "importance": 0.0066852995353007295
+              },
+              {
+                "feature": "distance_age_interaction",
+                "importance": 0.005630238298625926
+              },
+              {
+                "feature": "FEMA Map Date_frequency",
+                "importance": 0.005485496114205812
+              },
+              {
+                "feature": "rent_per_parking",
+                "importance": 0.005139532674389175
+              },
+              {
+                "feature": "properties_within_1mi",
+                "importance": 0.00509243741332715
+              },
+              {
+                "feature": "Parking Ratio",
+                "importance": 0.004819175623871262
+              },
+              {
+                "feature": "Origination Date_frequency",
+                "importance": 0.004010831885284748
+              },
+              {
+                "feature": "Ceiling Ht",
+                "importance": 0.0037218997954381592
+              },
+              {
+                "feature": "Year Built",
+                "importance": 0.003021712375843542
+              },
+              {
+                "feature": "Building Tax Expenses",
+                "importance": 0.002991752777437395
+              },
+              {
+                "feature": "Building Operating Expenses",
+                "importance": 0.0027014765097443843
+              }
+            ],
+            "message": "Feature importances look reasonable"
+          },
+          "metrics": {
+            "max_importance_ratio": 0.5046,
+            "zero_importance_count": "9",
+            "zero_importance_pct": 4.64,
+            "importance_cv": 7.3978
+          }
+        }
+      },
+      "all_passed": false,
+      "total_errors": 1,
+      "total_warnings": 4
+    },
+    "error_analysis": {
+      "timestamp": "2025-11-29T17:33:13.854113",
+      "metrics": {
+        "mae": 0.8934726221777411,
+        "rmse": 1.2991108674543086,
+        "r2": 0.7900583378942412,
+        "mape": 8.106009109285091,
+        "within_1dollar_pct": 68.24890307140008,
+        "within_10pct_pct": 77.02433187076187
+      },
+      "price_range_analysis": {
+        "mean": {
+          "<$8": 2.0550340287541933,
+          "$8-10": 0.8100542724795657,
+          "$10-12": 0.8789167608017633,
+          "$12-15": 0.6793900151477947,
+          "$15-20": 1.169090923650864,
+          ">$20": NaN
+        },
+        "count": {
+          "<$8": 154,
+          "$8-10": 390,
+          "$10-12": 472,
+          "$12-15": 1124,
+          "$15-20": 367,
+          ">$20": 0
+        }
+      }
+    }
+  },
+  "critical_issues": [
+    "model_validation: 1 errors"
+  ]
+}

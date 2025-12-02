@@ -1,0 +1,70 @@
+{
+  "timestamp": "2025-11-29T17:33:07.356060",
+  "stage": "clean",
+  "validations": {
+    "schema": {
+      "validator": "schema_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "num_rows": 15467,
+        "num_columns": 87,
+        "non_datetime_date_col": "Origination Date"
+      }
+    },
+    "data_quality": {
+      "validator": "data_quality_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "5 columns with >95% missing: ['Avg Rent-Direct (Office)', 'Rail Lines', 'For Sale Price', 'Avg Rent-Direct (Industrial)', 'Average Weighted Rent']...",
+        "4 columns with zero variance: ['State', 'Continent', 'Country', 'Subcontinent']",
+        "1846 duplicate rows (11.94%)",
+        "1 columns with >10% outliers"
+      ],
+      "info": {
+        "high_missing_columns": {
+          "Avg Rent-Direct (Office)": 99.35346220986617,
+          "Rail Lines": 99.1077778496153,
+          "For Sale Price": 98.30607098984936,
+          "Avg Rent-Direct (Industrial)": 97.60781017650481,
+          "Average Weighted Rent": 97.16169910131246
+        },
+        "overall_missing_pct": 31.62,
+        "zero_variance_columns": [
+          "State",
+          "Continent",
+          "Country",
+          "Subcontinent"
+        ],
+        "num_duplicates": "1846",
+        "columns_with_high_outliers": {
+          "Origination Amount": {
+            "count": "468",
+            "percentage": 10.59,
+            "bounds": [
+              -5542000.0,
+              8531500.0
+            ]
+          }
+        }
+      }
+    },
+    "business_rules": {
+      "validator": "business_rules_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Year Built: 7 values outside range [1800-2030]",
+        "Market Name: 235 missing values (1.5%)",
+        "Building Class: 110 values not in [A, B, C, unknown]",
+        "Logical inconsistency: 13 properties with Available Space > RBA"
+      ],
+      "info": {}
+    }
+  },
+  "all_passed": true,
+  "total_errors": 0,
+  "total_warnings": 8
+}

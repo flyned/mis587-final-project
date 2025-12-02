@@ -1,0 +1,20 @@
+{
+  "residual_stats": {
+    "mean": -0.04182056758868178,
+    "std": 1.047396332328862,
+    "median": -0.015840823574306384,
+    "skew": -0.5705226890501779,
+    "kurtosis": 5.4954795342498155,
+    "min": -6.65996997259686,
+    "max": 4.502265673340551
+  },
+  "normality_test": {
+    "statistic": 0.9019757394774279,
+    "p_value": 2.2183923417994457e-37,
+    "is_normal": false,
+    "test_name": "Shapiro-Wilk",
+    "sample_size": 2507
+  },
+  "outlier_count": 60,
+  "outlier_pct": 2.3932987634623055
+}

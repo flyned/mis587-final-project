@@ -1,0 +1,93 @@
+{
+  "timestamp": "2025-11-29T17:33:10.845102",
+  "stage": "engineered",
+  "validations": {
+    "schema": {
+      "validator": "schema_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Column 'Property Address' has very high cardinality (100.0%) - likely an identifier"
+      ],
+      "info": {
+        "num_rows": 7520,
+        "num_columns": 114,
+        "non_datetime_date_col": "Origination Date"
+      }
+    },
+    "data_quality": {
+      "validator": "data_quality_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "5 columns with zero variance: ['Number Of Stories_is_outlier_low', 'Parking Ratio_is_outlier_low', 'Percent Leased_is_outlier_low', 'Percent Leased_is_outlier_high', 'Taxes Per SF_is_outlier_low']",
+        "5 columns with >10% outliers"
+      ],
+      "info": {
+        "overall_missing_pct": 3.06,
+        "zero_variance_columns": [
+          "Number Of Stories_is_outlier_low",
+          "Parking Ratio_is_outlier_low",
+          "Percent Leased_is_outlier_low",
+          "Percent Leased_is_outlier_high",
+          "Taxes Per SF_is_outlier_low"
+        ],
+        "columns_with_high_outliers": {
+          "Origination Amount": {
+            "count": "251",
+            "percentage": 11.34,
+            "bounds": [
+              -5540000.0,
+              8530000.0
+            ]
+          },
+          "years_since_sale": {
+            "count": "2764",
+            "percentage": 36.76,
+            "bounds": [
+              5.22,
+              11.38
+            ]
+          },
+          "sale_month_sin": {
+            "count": "3056",
+            "percentage": 40.64,
+            "bounds": [
+              -0.0,
+              0.0
+            ]
+          },
+          "sale_month_cos": {
+            "count": "3272",
+            "percentage": 43.51,
+            "bounds": [
+              -0.0,
+              0.0
+            ]
+          },
+          "Zoning_target_encoded": {
+            "count": "765",
+            "percentage": 10.17,
+            "bounds": [
+              11.19,
+              13.68
+            ]
+          }
+        }
+      }
+    },
+    "business_rules": {
+      "validator": "business_rules_validation",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "Year Built: 5 values outside range [1800-2030]",
+        "Building Class: 42 values not in [A, B, C, unknown]"
+      ],
+      "info": {}
+    }
+  },
+  "all_passed": true,
+  "total_errors": 0,
+  "total_warnings": 5
+}
