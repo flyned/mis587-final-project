@@ -328,55 +328,56 @@ This level of accuracy meets commercial real estate standards, where traditional
 
 | Rank | Feature | Importance | Category |
 |------|---------|------------|----------|
-| 1 | log_rent_sf_yr | 28.4% | Numerical Transform |
-| 2 | Longitude | 10.7% | Location |
-| 3 | FEMA Map Date (Target Encoded) | 8.6% | Temporal |
-| 4 | properties_within_5mi | 4.9% | Geospatial |
-| 5 | Latitude | 4.7% | Location |
-| 6 | Origination Date (Target Encoded) | 3.6% | Temporal |
-| 7 | FEMA Map Date (Frequency) | 3.1% | Temporal |
-| 8 | dist_to_market_center | 2.4% | Geospatial |
-| 9 | Floodplain Area (unknown) | 1.9% | Categorical |
-| 10 | Flood Risk Area (unknown) | 1.8% | Categorical |
-| 11 | properties_within_1mi | 1.7% | Geospatial |
-| 12 | Fema Flood Zone (unknown) | 1.6% | Categorical |
-| 13 | Rent/SF/Yr outlier (low flag) | 1.3% | Outlier Treatment |
-| 14 | Rent/SF/Yr outlier (high flag) | 1.3% | Outlier Treatment |
-| 15 | distance_age_interaction | 1.3% | Interaction |
-| 16 | Zoning (Target Encoded) | 1.2% | Categorical |
-| 17 | RBA | 1.1% | Size |
-| 18 | Typical Floor Size | 1.0% | Size |
-| 19 | Building Operating Expenses | 1.0% | Financial |
-| 20 | rent_per_parking | 0.9% | Ratio Feature |
+| 1 | Longitude | 14.9% | Location |
+| 2 | FEMA Map Date (Target Encoded) | 11.8% | Temporal |
+| 3 | Latitude | 7.4% | Location |
+| 4 | properties_within_5mi | 6.6% | Geospatial |
+| 5 | Origination Date (Target Encoded) | 4.3% | Temporal |
+| 6 | FEMA Map Date (Frequency) | 4.2% | Temporal |
+| 7 | dist_to_market_center | 3.8% | Geospatial |
+| 8 | properties_within_1mi | 2.3% | Geospatial |
+| 9 | Fema Flood Zone (unknown) | 2.2% | Categorical |
+| 10 | Flood Risk Area (unknown) | 2.0% | Categorical |
+| 11 | distance_age_interaction | 1.8% | Interaction |
+| 12 | Rent/SF/Yr outlier (low flag) | 1.8% | Outlier Treatment |
+| 13 | RBA | 1.7% | Size |
+| 14 | Floodplain Area (unknown) | 1.7% | Categorical |
+| 15 | Typical Floor Size | 1.5% | Size |
+| 16 | Zoning (Target Encoded) | 1.4% | Categorical |
+| 17 | Building Operating Expenses | 1.2% | Financial |
+| 18 | rent_per_parking | 1.1% | Ratio Feature |
+| 19 | building_age | 1.0% | Temporal |
+| 20 | Star Rating | 0.9% | Quality |
 
 **Key Insights:**
 
-1. **Location Dominates (38.9% combined):**
-   - Longitude (10.7%) + Latitude (4.7%) = 15.4%
-   - Distance to market center: 2.4%
-   - Property density (within 5mi/1mi): 6.6%
-   - Market/Submarket encoding: captured in target encoded features
+1. **Location Dominates (35% combined):**
+   - Longitude (14.9%) + Latitude (7.4%) = 22.3%
+   - Distance to market center: 3.8%
+   - Property density (within 5mi/1mi): 8.9%
    - **Business Implication:** "Location, location, location" validated quantitatively
 
-2. **Temporal Factors Critical (15.3% combined):**
-   - FEMA Map Date: 11.7% (target + frequency encoding)
-   - Origination Date: 3.6%
+2. **Temporal Factors Critical (20.3% combined):**
+   - FEMA Map Date: 16.0% (target + frequency encoding)
+   - Origination Date: 4.3%
    - **Business Implication:** Regulatory timeline and loan origination patterns strongly predict rent—possibly proxy for market cycles
 
-3. **Log Transformations Powerful (28.4%):**
-   - log_rent_sf_yr captures non-linear rent relationships
-   - **Business Implication:** Rental markets exhibit exponential rather than linear pricing patterns
-
-4. **Geospatial Context Matters (8.9%):**
-   - Property density within 5mi and 1mi
-   - Distance to market center
+3. **Geospatial Context Matters (12.7%):**
+   - Property density within 5mi (6.6%) and 1mi (2.3%)
+   - Distance to market center (3.8%)
    - **Business Implication:** Properties in dense, central locations command premium rents
 
-5. **Missing Data Signals (4.6%):**
-   - Floodplain Area (unknown): 1.9%
-   - Flood Risk Area (unknown): 1.8%
-   - FEMA Flood Zone (unknown): 1.6%
+4. **Missing Data Signals (5.9%):**
+   - Fema Flood Zone (unknown): 2.2%
+   - Flood Risk Area (unknown): 2.0%
+   - Floodplain Area (unknown): 1.7%
    - **Business Implication:** Absence of flood data may indicate older properties or data quality issues that correlate with rent
+
+5. **Property Characteristics (5.1%):**
+   - RBA: 1.7%
+   - Typical Floor Size: 1.5%
+   - distance_age_interaction: 1.8%
+   - **Business Implication:** Size and age interactions capture property lifecycle effects on rent
 
 6. **Industrial-Specific Features Modest Impact:**
    - Loading docks, ceiling height, parking ratio individually contribute <1%
@@ -468,19 +469,20 @@ This transparency builds stakeholder trust and enables actionable insights.
 
 **Error Segmentation by Market:**
 
-| Market | Property Count | MAE | MAPE | Best/Worst |
-|--------|----------------|------|------|------------|
-| Boston MA | 287 | $0.52 | 4.8% | Best |
-| Philadelphia PA | 312 | $0.58 | 5.2% | Good |
-| New York NY | 421 | $0.64 | 5.9% | Good |
-| **Overall** | **2,507** | **$0.68** | **6.2%** | **Average** |
-| Hartford CT | 189 | $0.79 | 7.4% | Below Average |
-| Springfield MA | 94 | $0.96 | 9.1% | Worst |
+| Market | Property Count | MAE | MAPE | R² | Best/Worst |
+|--------|----------------|------|------|-----|------------|
+| Providence, RI | 277 | $0.56 | 6.4% | 0.653 | Best |
+| Boston, MA | 1,403 | $0.68 | 5.0% | 0.748 | Good |
+| Worcester, MA | 377 | $0.69 | 7.7% | 0.738 | Good |
+| Pittsfield, MA | 63 | $0.69 | 7.6% | 0.562 | Average |
+| Barnstable Town, MA | 95 | $0.71 | 5.0% | 0.530 | Average |
+| Springfield, MA | 250 | $0.85 | 11.3% | 0.632 | Below Average |
+| **Overall** | **2,507** | **$1.20** | **11.0%** | **0.676** | **Average** |
 
 **Insights:**
-- Tier 1 metros (Boston, NYC) have best prediction accuracy
-- Smaller markets (Springfield, Hartford) have higher error
-- **Recommendation:** Flag predictions in small markets as lower confidence
+- Providence and Boston have best prediction accuracy
+- Springfield has higher error (11.3% MAPE) - smaller market with less data
+- **Recommendation:** Flag predictions in smaller markets (Springfield, Pittsfield) as lower confidence
 
 **Error Segmentation by Property Type:**
 
@@ -1027,12 +1029,13 @@ This project successfully developed a production-ready machine learning system f
 
 **Technical Accomplishments:**
 - ✅ Processed 15,467 property records into clean, analysis-ready dataset
-- ✅ Engineered 195 predictive features from 78 raw variables
-- ✅ Trained and evaluated 6 machine learning models
-- ✅ Achieved 86% accuracy (R² = 0.861) with $0.68/SF/Yr MAE
+- ✅ Engineered 194 predictive features from 78 raw variables
+- ✅ Trained and evaluated 7 machine learning models
+- ✅ Achieved 76% accuracy (R² = 0.762) with Neural Network, $0.99/SF/Yr MAE
+- ✅ Random Forest backup model: R² = 0.676, MAE = $1.20/SF/Yr
 - ✅ Implemented SHAP analysis for model interpretability
-- ✅ Reduced memory requirements by 99.3% (70GB → 500MB)
-- ✅ Deployed interactive web application and inference API
+- ✅ Reduced memory requirements by 99.5% (70GB → 384MB)
+- ✅ Deployed interactive 7-page Streamlit web application
 
 **Business Value Delivered:**
 - ✅ Accurate rent predictions enable property valuation
@@ -1122,13 +1125,13 @@ Three components were added beyond original proposal:
 **Business Lessons:**
 
 1. **"Good Enough" Models Have Value:**
-   - R² = 0.86 not perfect, but excellent for real estate
-   - Traditional appraisals vary 10-20%, model achieves 6% error
+   - R² = 0.76 not perfect, but excellent for real estate
+   - Traditional appraisals vary 10-20%, model achieves 8-11% error
    - Don't over-optimize at expense of deployment speed
 
 2. **Segment-Specific Performance Matters:**
-   - Overall MAE $0.68 masks 4x variation across markets
-   - High-confidence predictions (Tier 1 markets) more valuable than low-confidence averages
+   - Overall MAE $0.99 (NN) / $1.20 (RF) masks variation across markets
+   - High-confidence predictions (Boston, Providence) more valuable than low-confidence averages
    - Communicate uncertainty, don't hide it
 
 3. **Explainability Enables Adoption:**
@@ -1392,9 +1395,12 @@ MIS587FinalProject/
 - `properties_within_5mi = COUNT(properties WHERE distance < 5 miles)`
 
 **Numerical Transformations:**
-- `log_rent_sf_yr = log(Rent/SF/Yr + 1)`
+- `log_land_area = log(Land Area + 1)`
+- `log_taxes_total = log(Taxes Total + 1)`
 - `land_to_building_ratio = Land Area / RBA`
 - `rent_per_parking = Rent/SF/Yr / Parking Spaces`
+
+*Note: `log_rent_sf_yr` was initially created but removed from features to prevent target leakage.*
 
 **Interaction Features:**
 - `distance_age_interaction = dist_to_market_center × building_age`

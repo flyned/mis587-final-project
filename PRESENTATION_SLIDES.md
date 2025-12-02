@@ -201,20 +201,20 @@
 **Content - Horizontal Bar Chart:**
 
 1. Longitude - 14.9% (Location)
-2. FEMA Map Date (encoded) - 11.1% (Temporal)
-3. Latitude - 7.7% (Location)
-4. Properties within 5mi - 6.4% (Density)
-5. FEMA Date (frequency) - 4.7% (Temporal)
-6. Origination Date - 4.4% (Temporal)
-7. Distance to Market Center - 3.7% (Geospatial)
-8. FEMA Flood Zone - 2.4% (Categorical)
-9. Properties within 1mi - 2.4% (Density)
-10. Distance × Age - 1.8% (Interaction)
+2. FEMA Map Date (target encoded) - 11.8% (Temporal)
+3. Latitude - 7.4% (Location)
+4. Properties within 5mi - 6.6% (Density)
+5. Origination Date (target encoded) - 4.3% (Temporal)
+6. FEMA Map Date (frequency) - 4.2% (Temporal)
+7. Distance to Market Center - 3.8% (Geospatial)
+8. Properties within 1mi - 2.3% (Density)
+9. FEMA Flood Zone (unknown) - 2.2% (Categorical)
+10. Distance × Age Interaction - 1.8% (Interaction)
 
 **Visual:** Use actual chart from `figures/feature_importance/`
 
 **Insight Box:**
-"Location + Temporal = 57% of predictive power"
+"Location + Temporal = 55% of predictive power"
 
 ---
 
@@ -240,6 +240,14 @@
 3. **Property Density (5mi)**
    - High density (Boston): +$0.50 to +$2/SF/Yr
    - Sparse areas: -$0.25 to -$0.75/SF/Yr
+
+4. **Origination Date**
+   - Recent originations: +$0.50 to +$1.50/SF/Yr
+   - Older originations: -$0.25 to -$0.75/SF/Yr
+
+5. **Distance to Market Center**
+   - Urban core (<5mi): +$0.50 to +$1/SF/Yr
+   - Suburban/rural (>15mi): -$0.50 to -$1.50/SF/Yr
 
 **Visual:** SHAP summary plot (from `figures/shap_analysis/`)
 
