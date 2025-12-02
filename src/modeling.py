@@ -45,6 +45,8 @@ def prepare_data_for_modeling(df, target_column='Rent/SF/Yr', ref_columns=None):
     drop_cols = [
         target_column,
         'log_rent_sf_yr',  # CRITICAL: Remove target variable transformation to prevent data leakage
+        'Rent/SF/Yr_is_outlier_low',  # Target-derived feature - data leakage
+        'Rent/SF/Yr_is_outlier_high',  # Target-derived feature - data leakage
         'Property Address', 'Market Name', 'Submarket Name', 'City', 'State',
         'Zip', 'County Name', 'Building Park', 'Submarket Cluster',
         'Continent', 'Country', 'Subcontinent', 'Cross Street',

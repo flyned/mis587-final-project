@@ -108,7 +108,7 @@
 
 ## SLIDE 6: Feature Engineering Pipeline
 
-**Headline:** "From 78 Raw Features to 195 Engineered Features"
+**Headline:** "From 78 Raw Features to 192 Engineered Features"
 
 **Content - 6 Phases (Icons for each):**
 
@@ -145,17 +145,17 @@
 | Model | Val R² | Val MAE | Test R² | Test MAE |
 |-------|--------|---------|---------|----------|
 | **Neural Network** ⭐ | **0.762** | **$0.99** | **0.615** | **$1.04** |
-| Random Forest | 0.676 | $1.20 | 0.656 | $1.21 |
-| LightGBM | 0.671 | $1.22 | 0.651 | $1.23 |
-| XGBoost | 0.668 | $1.24 | 0.649 | $1.25 |
-| Ridge | 0.653 | $1.32 | 0.641 | $1.35 |
-| Lasso | 0.652 | $1.32 | 0.640 | $1.36 |
-| Decision Tree | 0.512 | $1.68 | 0.498 | $1.72 |
+| Random Forest | 0.640 | $1.24 | 0.623 | $1.24 |
+| LightGBM | 0.635 | $1.26 | 0.618 | $1.27 |
+| XGBoost | 0.632 | $1.28 | 0.615 | $1.29 |
+| Ridge | 0.617 | $1.36 | 0.605 | $1.39 |
+| Lasso | 0.616 | $1.36 | 0.604 | $1.40 |
+| Decision Tree | 0.476 | $1.72 | 0.462 | $1.76 |
 
 **Winner Box:**
 "Neural Network Selected
 - Best validation R² = 0.762
-- 8.6% improvement over Random Forest
+- 19% improvement over Random Forest (0.640)
 - Captures complex non-linear relationships"
 
 **Also Developed:**
@@ -200,16 +200,16 @@
 
 **Content - Horizontal Bar Chart:**
 
-1. Longitude - 14.9% (Location)
-2. FEMA Map Date (target encoded) - 11.8% (Temporal)
-3. Latitude - 7.4% (Location)
-4. Properties within 5mi - 6.6% (Density)
-5. Origination Date (target encoded) - 4.3% (Temporal)
-6. FEMA Map Date (frequency) - 4.2% (Temporal)
-7. Distance to Market Center - 3.8% (Geospatial)
-8. Properties within 1mi - 2.3% (Density)
-9. FEMA Flood Zone (unknown) - 2.2% (Categorical)
-10. Distance × Age Interaction - 1.8% (Interaction)
+1. Longitude - 15.2% (Location)
+2. FEMA Map Date (target encoded) - 11.6% (Temporal)
+3. Latitude - 7.2% (Location)
+4. Properties within 5mi - 6.7% (Density)
+5. FEMA Map Date (frequency) - 4.2% (Temporal)
+6. Origination Date (target encoded) - 4.2% (Temporal)
+7. Distance to Market Center - 3.5% (Geospatial)
+8. Properties within 1mi - 2.5% (Density)
+9. Floodplain Area (unknown) - 2.1% (Categorical)
+10. Flood Risk Area (unknown) - 1.9% (Categorical)
 
 **Visual:** Use actual chart from `figures/feature_importance/`
 
@@ -262,20 +262,21 @@
 **Content - 2 Charts Side-by-Side:**
 
 **Left: Error by Property Type**
-- Showroom: MAE $0.58, R² 0.900 ✓
-- Warehouse: MAE $0.64, R² 0.871 ✓
-- Service: MAE $0.67, R² 0.839 ✓
-- Manufacturing: MAE $0.77, R² 0.852
+- Warehouse: MAE $1.16, R² 0.647 ✓
+- Service: MAE $1.20, R² 0.614 ✓
+- Showroom: MAE $1.20, R² 0.604 ✓
+- Manufacturing: MAE $1.35, R² 0.623
 
 **Right: Error by Market**
-- **Providence, RI: MAE $0.56, R² 0.653** ⭐ Best
-- **Boston, MA: MAE $0.68, R² 0.748** ⭐
-- Worcester, MA: MAE $0.69, R² 0.738
-- Springfield, MA: MAE $0.85, R² 0.632
+- **Pittsfield, MA: MAE $1.09, R² 0.10**
+- **Barnstable Town, MA: MAE $1.18, R² -0.05**
+- **Providence, RI: MAE $1.20, R² -0.06**
+- **Boston, MA: MAE $1.23, R² 0.34** ⭐ Best (largest sample)
+- Springfield, MA: MAE $1.35, R² 0.12
 
 **Visual:** Bar charts from `figures/error_segmentation/`
 
-**Insight:** "Best performance in core metro markets (Boston, Providence) with high sample density"
+**Insight:** "Best performance on Warehouse properties; Boston market shows good balance of accuracy and sample size"
 
 ---
 
@@ -350,9 +351,9 @@
 **Content - 4 Challenges:**
 
 **1. Data Leakage 🔒**
-- **Challenge:** Duplicate properties across splits
-- **Solution:** Deduplicate before splitting
-- **Result:** Zero train-test contamination
+- **Challenge:** Duplicate properties across splits; target-derived features
+- **Solution:** Deduplicate before splitting; exclude rent outlier indicators
+- **Result:** Zero train-test contamination; honest performance metrics
 
 **2. Memory Explosion 💾**
 - **Challenge:** 70GB RAM usage (crashed laptop)
@@ -380,14 +381,14 @@
 **Content:**
 
 **✅ Achievements (All 4 Objectives from Oct 6, 2025 Proposal):**
-1. **Accurate Price Prediction** - Neural Network R² = 0.762, MAE = $0.99/SF
+1. **Accurate Price Prediction** - Neural Network R² = 0.762, MAE = $0.99/SF; RF R² = 0.640
 2. **Market Timing Forecast** - DOM model 97.8% accuracy within 7 days
 3. **Value Attribution** - SHAP analysis with interpretable explanations
 4. **Opportunity Identification** - Investment scoring in Streamlit app
 
 **✅ Technical Deliverables:**
 - 7-page Streamlit application
-- 194 engineered features
+- 192 engineered features
 - 3 trained models (NN, RF, DOM)
 - Memory optimized (70GB → 384MB)
 

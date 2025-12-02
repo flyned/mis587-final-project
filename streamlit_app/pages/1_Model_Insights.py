@@ -36,7 +36,7 @@ with st.sidebar:
 
         **R² (R-squared)**
         How much of the rent variation the model explains.
-        *Higher is better.* R² of 0.65 means the model explains 65% of rent differences.
+        *Higher is better.* R² of 0.76 means the model explains 76% of rent differences.
 
         **SHAP Values**
         Shows how each feature pushes a prediction up or down.
